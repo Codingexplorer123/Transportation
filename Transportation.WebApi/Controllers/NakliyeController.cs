@@ -36,7 +36,31 @@ namespace Transportation.WebApi.Controllers
         [HttpPost]
         public IActionResult TalepOlustur(Nakliye talep)
         {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             
+            _context.Nakliyeler.Add(talep);
+            _context.SaveChanges();
+            return StatusCode(201);
+        }
+
+
+        [HttpPut("{id}")]
+        public IActionResult TalepGuncelle(int id, [FromBody] Nakliye guncelleme)
+        {
+            Nakliye mevcut = _context.Nakliyeler.SingleOrDefault(x => x.NakliyatId == id);
+
+            if (mevcut is null)
+                return NotFound();
+
+            mevcut.TalepTipi = guncelleme.TalepTipi != default ? guncelleme.TalepTipi : mevcut.TalepTipi;
+            mevcut.TalepTarihi = guncelleme.TalepTarihi != default ? guncelleme.TalepTarihi : mevcut.TalepTarihi;
+            mevcut.Aciklama = guncelleme.Aciklama != default ? guncelleme.Aciklama : mevcut.Aciklama;
+            
+            _context.SaveChanges();
+            return Ok();
         }
     }
 }

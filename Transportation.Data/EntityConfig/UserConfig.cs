@@ -42,7 +42,7 @@ namespace Transportation.Data.EntityConfig
                     Email = "berk@gmail.com",
                     PhoneNumber = "5351111111",
                     Adress = "Istanbul",
-                    DogumTarihi = 11/02/1955,
+                    DogumTarihi = new DateTime(1955,11,2),
                     Password="1234",
                     TCNo=11111111111,
 
