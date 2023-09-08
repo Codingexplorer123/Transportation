@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using TransportationEntity;
@@ -17,7 +18,23 @@ namespace Transportation.Data.Context
             ("Server =(localdb)\\MSSqlLocalDb; Database=Transportation; Trusted_Connection=True;TrustServerCertificate=true");
             // Lokalimdeki SQL Server Baglantim database calismasi icin connectionstring ifadesini degistiriniz.
         }
+        public TransportationDbContext()
+        {
+            
+        }
+        public TransportationDbContext(DbContextOptions<TransportationDbContext> options):base(options)
+        {
+            
+        }
 
         public DbSet<Nakliye>Nakliyeler { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            //Burasi Calisan Assembly icersinde ITypeEntityConfig interface'inden kalitim almis ne kadar class varsa 
+            // onun icerisindeki Configure metodunu cagirir.
+        }
     }
 }

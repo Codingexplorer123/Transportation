@@ -1,8 +1,11 @@
-﻿namespace TransportationEntity
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace TransportationEntity
 {
-    public class Nakliyat
+    public class Nakliye
     {
         public int NakliyatId  { get; set; }
+        [Required]
         public string TalepTipi { get; set; }
 
         public string Aciklama { get; set; }
