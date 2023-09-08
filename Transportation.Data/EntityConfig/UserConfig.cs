@@ -43,6 +43,9 @@ namespace Transportation.Data.EntityConfig
                     PhoneNumber = "5351111111",
                     Adress = "Istanbul",
                     DogumTarihi = 11/02/1955,
+                    Password="1234",
+                    TCNo=11111111111,
+
 
                 });
             
