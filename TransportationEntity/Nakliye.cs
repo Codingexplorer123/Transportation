@@ -5,7 +5,7 @@ namespace TransportationEntity
     public class Nakliye
     {
         public int NakliyatId  { get; set; }
-        [Required]
+        
         public string TalepTipi { get; set; }
 
         public bool NakliyeYapildimi { get; set; }

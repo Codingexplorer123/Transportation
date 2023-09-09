@@ -19,13 +19,15 @@ namespace TransportationEntity
         public string LastName { get; set; }
         [EmailAddress]
         public string? Email { get; set; }
-        [Phone]
+        [RegularExpression(@"^(\d{10})$",ErrorMessage ="Telefon numarasi 10 rakamdan olusmalidir.")]
         public string? PhoneNumber { get; set; }
         [Required(AllowEmptyStrings = true)]
         public string? Adress { get; set; }
         [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy}")]
-        public DateTime DogumTarihi { get; set; } 
+        public DateTime DogumTarihi { get; set; }
+        [DataType(DataType.Password)]
         public string Password { get; set; }
+        [RegularExpression("^[0-9]{11}$",ErrorMessage ="TC No 11 numaradan olusmalidir.")]
         public long TCNo { get; set; }
 
 
