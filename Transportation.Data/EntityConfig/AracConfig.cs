@@ -22,8 +22,12 @@ namespace Transportation.Data.EntityConfig
             builder.Property(p=>p.AracSoforuTelNo).IsRequired();
             builder.Property(p=>p.FirmaTelNo).IsRequired();
             builder.HasIndex(p=>p.FirmaTelNo).IsUnique();
-            
 
+           
+
+
+
+              
             
         }
     }

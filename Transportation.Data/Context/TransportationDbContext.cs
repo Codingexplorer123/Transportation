@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Transportation.Data.DummyData;
 using TransportationEntity;
 
 namespace Transportation.Data.Context
@@ -28,6 +29,9 @@ namespace Transportation.Data.Context
         }
 
         public DbSet<Nakliye>Nakliyeler { get; set; }
+        public DbSet<Arac>Araclar { get; set; }
+        public DbSet<Rezervasyon> Rezervasyonlar { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -35,6 +39,7 @@ namespace Transportation.Data.Context
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             //Burasi Calisan Assembly icersinde ITypeEntityConfig interface'inden kalitim almis ne kadar class varsa 
             // onun icerisindeki Configure metodunu cagirir.
+            modelBuilder.Entity<Arac>().HasData(DataGenerator.Araclar);
         }
     }
 }

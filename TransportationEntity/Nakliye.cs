@@ -5,16 +5,15 @@ namespace TransportationEntity
     public class Nakliye
     {
         public int NakliyatId  { get; set; }
-        
-        public string TalepTipi { get; set; }
 
-        public bool NakliyeYapildimi { get; set; }
+       
+        public bool? NakliyeYapildimi { get; set; }
 
-        public string MusteriDegerlendirmeleri { get; set; }
+        public string? MusteriDegerlendirmeleri { get; set; }
 
-        public string Aciklama { get; set; }
+        public string? Aciklama { get; set; }
 
-        public DateTime TalepTarihi { get; set; }
+        public DateTime TalepTarihi { get; set; }= DateTime.Now;
 
         public int RezervasyonId { get; set; }
         public int AracId { get; set; }
