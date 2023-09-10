@@ -39,7 +39,8 @@ namespace Transportation.Data.Context
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             //Burasi Calisan Assembly icersinde ITypeEntityConfig interface'inden kalitim almis ne kadar class varsa 
             // onun icerisindeki Configure metodunu cagirir.
-            modelBuilder.Entity<Arac>().HasData(DataGenerator.Araclar);
+
+            modelBuilder.Entity<Arac>().HasData(DataGenerator.AracListesi(20));
         }
     }
 }
