@@ -23,11 +23,12 @@ namespace Transportation.Data.Context
         {
             
         }
+        
         public TransportationDbContext(DbContextOptions<TransportationDbContext> options):base(options)
         {
             
         }
-
+        // DbContext deki context ayarlari TransportationDbContext e aktarildi.
         public DbSet<Nakliye>Nakliyeler { get; set; }
         public DbSet<Arac>Araclar { get; set; }
         public DbSet<Rezervasyon> Rezervasyonlar { get; set; }
@@ -40,7 +41,9 @@ namespace Transportation.Data.Context
             //Burasi Calisan Assembly icersinde ITypeEntityConfig interface'inden kalitim almis ne kadar class varsa 
             // onun icerisindeki Configure metodunu cagirir.
 
-            modelBuilder.Entity<Arac>().HasData(DataGenerator.AracListesi(20));
+            modelBuilder.Entity<Arac>().HasData(DataGeneratorArac.AracListesi(5));
+            modelBuilder.Entity<Nakliye>().HasData(DataGeneratorNakliye.NakliyeListesi(5));
+            modelBuilder.Entity<Rezervasyon>().HasData(DataGeneratorRezervasyon.RezervasyonListesi(5));
         }
     }
 }

@@ -4,7 +4,7 @@ namespace TransportationEntity
 {
     public class Nakliye
     {
-        public int NakliyatId  { get; set; }
+        public int NakliyeId  { get; set; }
 
        
         public bool? NakliyeYapildimi { get; set; }
@@ -15,7 +15,7 @@ namespace TransportationEntity
 
         public DateTime TalepTarihi { get; set; }= DateTime.Now;
 
-        public int RezervasyonId { get; set; }
+        
         public int AracId { get; set; }
         public Rezervasyon Rezervasyon { get; set; }
         public List<Arac> Araclar { get; set; }

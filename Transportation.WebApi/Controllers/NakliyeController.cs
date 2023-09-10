@@ -30,7 +30,7 @@ namespace Transportation.WebApi.Controllers
         [HttpGet("{id}")]
         public async Task <IActionResult> GetTalep(int id)
         {
-            var talep = await _context.Nakliyeler.FirstOrDefaultAsync(x=>x.NakliyatId == id);
+            var talep = await _context.Nakliyeler.FirstOrDefaultAsync(x=>x.NakliyeId == id);
             if (talep == null)
             {
                 return BadRequest();
@@ -54,12 +54,12 @@ namespace Transportation.WebApi.Controllers
         [HttpPut("{id}")]
         public async Task <IActionResult> TalepGuncelle(int id, [FromBody] Nakliye guncelleme)
         {
-            Nakliye mevcut = await _context.Nakliyeler.SingleOrDefaultAsync(x => x.NakliyatId == id);
+            Nakliye mevcut = await _context.Nakliyeler.SingleOrDefaultAsync(x => x.NakliyeId == id);
 
             if (mevcut is null)
                 return NotFound();
 
-            mevcut.TalepTipi = guncelleme.TalepTipi != default ? guncelleme.TalepTipi : mevcut.TalepTipi;
+            mevcut.MusteriDegerlendirmeleri = guncelleme.MusteriDegerlendirmeleri != default ? guncelleme.MusteriDegerlendirmeleri : mevcut.MusteriDegerlendirmeleri;
             mevcut.TalepTarihi = guncelleme.TalepTarihi != default ? guncelleme.TalepTarihi : mevcut.TalepTarihi;
             mevcut.Aciklama = guncelleme.Aciklama != default ? guncelleme.Aciklama : mevcut.Aciklama;
 

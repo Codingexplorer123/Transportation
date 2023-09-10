@@ -16,9 +16,8 @@ namespace Transportation.Data.EntityConfig
             
             builder.Property(p => p.MusteriDegerlendirmeleri).HasMaxLength(200);
             builder.Property(p => p.Aciklama).HasMaxLength(200);
-            
-           
-            
+          
         }
+        
     }
 }

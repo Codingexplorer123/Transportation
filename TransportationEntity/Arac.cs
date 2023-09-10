@@ -32,5 +32,6 @@ namespace TransportationEntity
         public string FirmaTelNo { get; set; }
 
         public Rezervasyon Rezervasyon { get; set; }
+        public Nakliye Nakliye { get; set; }
     }
 }
