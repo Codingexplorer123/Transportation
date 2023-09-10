@@ -16,9 +16,9 @@ namespace TransportationEntity
         public DateTime TalepTarihi { get; set; }= DateTime.Now;
 
         
-        public int AracId { get; set; }
-        public Rezervasyon Rezervasyon { get; set; }
-        public List<Arac> Araclar { get; set; }
+        public int? AracId { get; set; }
+        public Rezervasyon? Rezervasyon { get; set; }
+        public List<Arac>? Araclar { get; set; }
 
     }
 }

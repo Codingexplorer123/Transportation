@@ -31,7 +31,7 @@ namespace TransportationEntity
         [DisplayFormat(DataFormatString ="{0:###-###-####}")]
         public string FirmaTelNo { get; set; }
 
-        public Rezervasyon Rezervasyon { get; set; }
-        public Nakliye Nakliye { get; set; }
+        public Rezervasyon? Rezervasyon { get; set; }
+        public Nakliye? Nakliye { get; set; }
     }
 }

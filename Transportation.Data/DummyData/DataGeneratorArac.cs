@@ -13,27 +13,15 @@ namespace Transportation.Data.DummyData
     {
 
         //https://code-maze.com/data-generation-bogus-dotnet/  bogus data icin burdaki dokumantasyonu kullandim.
-        private static Faker<Arac> GetAracGenerator()
-        {
-
-
-            var AracId = 1;
-            return new Faker<Arac>()
-                .RuleFor(a => a.AracId, _ => ++AracId)
-                .RuleFor(a => a.AracTipi, f => f.PickRandom<AracTipi>())
-                .RuleFor(a => a.AracSoforuIsim, f => f.Name.FirstName())
-                .RuleFor(a => a.AracSoforuSoyisim, f => f.Name.LastName())
-                .RuleFor(a => a.AracSoforuTelNo, f => f.Phone.PhoneNumber("(###) ###-####"))
-                .RuleFor(a => a.FirmaTelNo, f => f.Phone.PhoneNumber("(0###) ###-####"));
-        }
+        
             public static List<Arac> AracListesi(int adet)
             {
                 List<Arac> araclar = new List<Arac>();
-                for (int i = 0; i < adet; i++)
+                for (int i = 1; i < adet; i++)
                 {
-                    var AracId = 1;
+                    
                     var result = new Faker<Arac>()
-                        .RuleFor(a => a.AracId, _ => ++AracId)
+                        
                         .RuleFor(a => a.AracTipi, f => f.PickRandom<AracTipi>())
                         .RuleFor(a => a.AracSoforuIsim, f => f.Name.FirstName())
                         .RuleFor(a => a.AracSoforuSoyisim, f => f.Name.LastName())
@@ -41,6 +29,7 @@ namespace Transportation.Data.DummyData
                         .RuleFor(a => a.FirmaTelNo, f => f.Phone.PhoneNumber("tr"));
                     Arac arac = result.Generate();
                     arac.AracPlakaNo = PlakaOlustur();
+                    arac.AracId = i;
                     araclar.Add(arac);
                 }
                 return araclar;

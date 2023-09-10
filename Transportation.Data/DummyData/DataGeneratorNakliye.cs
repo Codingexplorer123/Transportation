@@ -13,16 +13,16 @@ namespace Transportation.Data.DummyData
             public static List<Nakliye> NakliyeListesi(int adet)
             {
                 List<Nakliye> nakliyeler = new List<Nakliye>();
-                for (int i = 0; i < adet; i++)
+                for (int i = 1; i < adet; i++)
                 {
-                var NakliyeId = 1;
+                
                 var result = new Faker<Nakliye>()
-                    .RuleFor(a => a.NakliyeId, _ => ++NakliyeId)
+                    
                     .RuleFor(a => a.NakliyeYapildimi, f => f.Random.Bool())
                     .RuleFor(a => a.TalepTarihi, f => f.Date.Past(3));
 
                 Nakliye nakliye = result.Generate();
-                
+                nakliye.NakliyeId = i;
                 nakliyeler.Add(nakliye);
 
                 }
