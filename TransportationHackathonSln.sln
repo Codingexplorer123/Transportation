@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransportationEntity", "TransportationEntity\TransportationEntity.csproj", "{8E2EB255-998E-43EB-BAA5-A9918A30F640}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransportationEntity", "TransportationEntity\TransportationEntity.csproj", "{8E2EB255-998E-43EB-BAA5-A9918A30F640}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transportation.Data", "Transportation.Data\Transportation.Data.csproj", "{C5D8D556-C449-4807-A70F-4546ACAC17A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transportation.Data", "Transportation.Data\Transportation.Data.csproj", "{C5D8D556-C449-4807-A70F-4546ACAC17A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transportation.Business", "Transportation.Business\Transportation.Business.csproj", "{ED06F028-22B8-4B7C-A64C-537D5DC2D83F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transportation.Business", "Transportation.Business\Transportation.Business.csproj", "{ED06F028-22B8-4B7C-A64C-537D5DC2D83F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transportation.WebApi", "Transportation.WebApi\Transportation.WebApi.csproj", "{67B61A9D-41EF-4536-9BAB-AD444624C0FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transportation.WebMVC", "Transportation.WebApi\Transportation.WebMVC.csproj", "{67B61A9D-41EF-4536-9BAB-AD444624C0FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
