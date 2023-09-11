@@ -18,7 +18,7 @@ namespace TransportationEntity
         [RegularExpression(".*[a-zA]+.*", ErrorMessage = "Lutfen harf giriniz")]
         public string LastName { get; set; }
         [EmailAddress]
-        public string? Email { get; set; }
+        public string Email { get; set; }
         [RegularExpression(@"^(\d{10})$",ErrorMessage ="Telefon numarasi 10 rakamdan olusmalidir.")]
         public string? PhoneNumber { get; set; }
         [Required(AllowEmptyStrings = true)]
