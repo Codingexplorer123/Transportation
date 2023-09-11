@@ -26,7 +26,7 @@ namespace Transportation.Data.DummyData
                         .RuleFor(a => a.AracSoforuIsim, f => f.Name.FirstName())
                         .RuleFor(a => a.AracSoforuSoyisim, f => f.Name.LastName())
                         .RuleFor(a => a.AracSoforuTelNo, f => f.Phone.PhoneNumber("(###) ###-####"))
-                        .RuleFor(a => a.FirmaTelNo, f => f.Phone.PhoneNumber("tr"));
+                        .RuleFor(a => a.FirmaTelNo, f => f.Phone.PhoneNumber("(0##) ###-####"));
                     Arac arac = result.Generate();
                     arac.AracPlakaNo = PlakaOlustur();
                     arac.AracId = i;
