@@ -61,6 +61,20 @@ namespace Transportation.Data.Repository.Concrete
             return await dbContext.Set<T>().Where(filter).ToListAsync();
         }
 
+        public async Task<IQueryable<T>> GetAllInclude(Expression<Func<T,bool>>? filter = null , params Expression<Func<T, bool>>[] include)
+        {
+            IQueryable<T> query;
+            if(filter != null)
+            {
+                query = dbContext.Set<T>().Where(filter);
+            }
+            else
+            {
+                query = dbContext.Set<T>();    
+            }
+            return include.Aggregate(query,(current,includeProperty) => current.Include(includeProperty));
+        }
+
        
 
     
