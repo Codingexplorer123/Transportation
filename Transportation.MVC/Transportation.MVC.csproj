@@ -24,4 +24,9 @@
     <ProjectReference Include="..\Transportation.Data\Transportation.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\" />
+    <Folder Include="wwwroot\colorlib\" />
+  </ItemGroup>
+
 </Project>

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Transportation.Business.Abstract;
+using Transportation.MVC.Models.DTOs;
 
 namespace Transportation.MVC.Controllers
 {
@@ -13,7 +14,8 @@ namespace Transportation.MVC.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            LoginDTO loginDTO = new LoginDTO();
+            return View(loginDTO);
         }
     }
 }
