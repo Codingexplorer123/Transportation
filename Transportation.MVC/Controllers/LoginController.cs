@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.Security.Claims;
 using Transportation.Business.Abstract;
 using Transportation.MVC.Models.DTOs;
 
@@ -8,10 +9,13 @@ namespace Transportation.MVC.Controllers
     public class LoginController : Controller
     {
         private readonly IUserManager userManager;
+        private readonly IRoleManager roleManager;
 
-        public LoginController(IUserManager userManager)
+        public LoginController(IUserManager userManager, IRoleManager roleManager)
         {
             this.userManager = userManager;
+            this.roleManager = roleManager;
+
         }
         public IActionResult Index()
         {
@@ -29,7 +33,7 @@ namespace Transportation.MVC.Controllers
             }
             // burada modelstate.IsValid methodu ile model icerisinde belirttigimiz tum logindto annotationlarina girilen ifade uygunmu kontrol eder.
 
-            var user = userManager.GetAllAsync(u=>u.Email==loginDTO.Email && u.Password == loginDTO.Password).Result.FirstOrDefault();
+            var user = userManager.GetAllInclude(u=>u.Email==loginDTO.Email && u.Password == loginDTO.Password,r=>r.Roller).Result.FirstOrDefault();
             // user tarafindan girilen veriler ile databasedeki veriler kontrol edilir
 
             if(user==null)
@@ -37,7 +41,9 @@ namespace Transportation.MVC.Controllers
                 ModelState.AddModelError("", "Kullanici Adi Yada Sifre Hatali");
                 return View(loginDTO);
             }
-
+            var roles = user.Roller.ToList();
+            List<Claim> claims = new List<Claim>();
+            return View();
         }
     }
 }

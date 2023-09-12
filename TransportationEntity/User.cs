@@ -30,6 +30,15 @@ namespace TransportationEntity
         [RegularExpression("^[0-9]{11}$",ErrorMessage ="TC No 11 numaradan olusmalidir.")]
         public long TCNo { get; set; }
 
+        public ICollection<Role>? Roller { get; set; } = new List<Role>();
+        // Birden fazla kullanici ayni rolde olabilir hashset yerine liste yaptik
+        public User()
+        {
+            Roller = new List<Role>();
+        }
+
+        //Her yeni User eklendiginde userden gelen rolude roller listesine ekleyecegiz.
+
 
     }
 }
