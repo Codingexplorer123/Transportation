@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Transportation.Business.Abstract;
 using Transportation.Data.Repository.Abstract;
+using Transportation.Data.Repository.Concrete;
 
 namespace Transportation.Business.Concrete
 {
@@ -17,9 +18,9 @@ namespace Transportation.Business.Concrete
         // sirasi ile concrete classlarimizi interfacelere implement edecegiz. Daha sonra servicelerimizi program csdeki service container icerisine lifetime
         // ina gore (addscoped,addtransient yada addsingleton) metholari ile servicelerden uretilen nesnelerin kullanim suresini bildirerek kaydedecegiz.
         // depencylerimizi constructor icerisine enjeksiyon ederek kullanacagiz. Detay icin https://learn.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-7.0
-        public ManagerBase(IBaseRepository<T> repository)
+        public ManagerBase()
         {
-            _repository = repository;
+            _repository = new BaseRepository<T>(); 
         }
 
         public virtual async Task<int> InsertAsync(T entity)

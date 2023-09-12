@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Transportation.Business.Abstract;
 using Transportation.Data.Repository.Abstract;
+using Transportation.Data.Repository.Concrete;
 using TransportationEntity;
 
 namespace Transportation.Business.Concrete
@@ -13,9 +14,9 @@ namespace Transportation.Business.Concrete
     {
         private readonly IUserRepository _repository;
 
-        public  UserManager(IUserRepository repository) :base(repository)
+        public  UserManager()
         {
-            _repository = repository;
+            _repository = new UserRepository();
         }
     }
 }

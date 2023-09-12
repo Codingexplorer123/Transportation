@@ -15,8 +15,8 @@ namespace Transportation.MVC.Controllers
 
         public IActionResult Index()
         {
-            return RedirectToAction("Index", "Login");
-            // Program calisir calismaz direk Login Controller in index action metoduna gonderdim http requesti
+            return View();
+            
         }
 
         public IActionResult Privacy()

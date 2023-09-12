@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Transportation.Business.Abstract;
 using Transportation.Data.Repository.Abstract;
+using Transportation.Data.Repository.Concrete;
 using TransportationEntity;
 
 namespace Transportation.Business.Concrete
@@ -12,9 +13,9 @@ namespace Transportation.Business.Concrete
     public class AracManager : ManagerBase<Arac>, IAracManager
     {
         private readonly IAracRepository _repository;
-        public AracManager(IAracRepository repository) : base(repository)
+        public AracManager() 
         {
-            _repository = repository;
+            _repository = new AracRepository();
         }
 
         
