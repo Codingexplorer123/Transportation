@@ -11,11 +11,11 @@ namespace Transportation.Business.Concrete
 {
     public class AracManager : ManagerBase<Arac>, IAracManager
     {
-        private readonly IAracRepository _repository;
-        public AracManager(IAracRepository repository) : base(repository)
-        {
-            _repository = repository;
-        }
+        //private readonly IAracRepository _repository;
+        //public AracManager(IAracRepository repository) : base(repository)
+        //{
+        //    _repository = repository;
+        //}
 
         
     }

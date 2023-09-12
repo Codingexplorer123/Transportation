@@ -12,10 +12,10 @@ namespace Transportation.Business.Concrete
 {
     public class NakliyeManager : ManagerBase<Nakliye>, INakliyeManager
     {
-        private readonly INakliyeRepository _repository;
-        public NakliyeManager(NakliyeRepository repository) : base(repository)
-        {
-            _repository = repository;
-        }
+        //private readonly INakliyeRepository _repository;
+        //public NakliyeManager(NakliyeRepository repository) : base(repository)
+        //{
+        //    _repository = repository;
+        //}
     }
 }

@@ -11,11 +11,11 @@ namespace Transportation.Business.Concrete
 {
     public class UserManager : ManagerBase<User>, IUserManager
     {
-        private readonly IUserRepository _repository;
+        //private readonly IUserRepository _repository;
 
-        public  UserManager(IUserRepository repository) :base(repository)
-        {
-            _repository = repository;
-        }
+        //public  UserManager(IUserRepository repository) :base(repository)
+        //{
+        //    _repository = repository;
+        //}
     }
 }

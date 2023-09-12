@@ -11,10 +11,10 @@ namespace Transportation.Business.Concrete
 {
     public  class RoleManager: ManagerBase<Role>,IRoleManager
     {
-        private readonly IRoleRepository _repository;
-        public RoleManager(IRoleRepository repository) : base(repository) 
-        {
-            _repository = repository;
-        }
+        //private readonly IRoleRepository _repository;
+        //public RoleManager(IRoleRepository repository) : base(repository) 
+        //{
+        //    _repository = repository;
+        //}
     }
 }

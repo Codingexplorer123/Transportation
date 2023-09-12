@@ -11,10 +11,10 @@ namespace Transportation.Business.Concrete
 {
     public class RezervasyonManager:ManagerBase<Rezervasyon>,IRezervasyonManager
     {
-        private readonly IRezervasyonRepository _repository;
-        public RezervasyonManager(IRezervasyonRepository repository) : base(repository)
-        {
-            _repository = repository;
-        }
+        //private readonly IRezervasyonRepository _repository;
+        //public RezervasyonManager(IRezervasyonRepository repository) : base(repository)
+        //{
+        //    _repository = repository;
+        //}
     }
 }
