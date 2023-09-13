@@ -25,7 +25,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Content\Home\css\" />
+    <Folder Include="Content\Home\js\" />
     <Folder Include="wwwroot\colorlib\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\styles.css" />
+    <None Include="wwwroot\js\scripts.js" />
+    <None Include="wwwroot\lib\favicon.ico" />
   </ItemGroup>
 
 </Project>
