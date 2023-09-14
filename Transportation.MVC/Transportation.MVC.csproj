@@ -17,6 +17,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.9" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,12 +28,11 @@
   <ItemGroup>
     <Folder Include="Content\Home\css\" />
     <Folder Include="Content\Home\js\" />
-    <Folder Include="wwwroot\colorlib\" />
+    <Folder Include="wwwroot\css\" />
+    <Folder Include="wwwroot\js\" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\css\styles.css" />
-    <None Include="wwwroot\js\scripts.js" />
     <None Include="wwwroot\lib\favicon.ico" />
   </ItemGroup>
 
