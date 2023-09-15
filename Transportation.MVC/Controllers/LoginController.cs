@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Security.Claims;
 using Transportation.Business.Abstract;
@@ -25,7 +26,7 @@ namespace Transportation.MVC.Controllers
         }
 
         [HttpPost]
-     
+        [AllowAnonymous]
         public async Task<IActionResult> Index(LoginDTO loginDTO)
         {
             if(!ModelState.IsValid)
@@ -34,7 +35,7 @@ namespace Transportation.MVC.Controllers
             }
             // burada modelstate.IsValid methodu ile model icerisinde belirttigimiz tum logindto annotationlarina girilen ifade uygunmu kontrol eder.
 
-            var user = userManager.GetAllInclude(u=>u.Email==loginDTO.Email && u.Password == loginDTO.Password,r=>r.Roller).Result.FirstOrDefault();
+            var user = userManager.GetAllInclude(u=>u.Email==loginDTO.Email && u.Password == loginDTO.Password).Result.FirstOrDefault();
             // user tarafindan girilen veriler ile databasedeki veriler kontrol edilir
 
             if(user==null)
@@ -42,9 +43,8 @@ namespace Transportation.MVC.Controllers
                 ModelState.AddModelError("", "Kullanici Adi Yada Sifre Hatali");
                 return View(loginDTO);
             }
-            var roles = user.Roller.ToList();
-            List<Claim> claims = new List<Claim>();
-            return View();
+           
+            return RedirectToAction("Index","Nakliye");
         }
         [HttpGet]
         public async Task<IActionResult> Forget()
