@@ -21,10 +21,11 @@ namespace Transportation.MVC.Controllers
         {
             LoginDTO loginDTO = new LoginDTO();
             return View(loginDTO);
+            // burda loginDTO modelimizi obje olarak login(index) view icerisine gonderiyoruz
         }
 
         [HttpPost]
-        [AutoValidateAntiforgeryToken]
+     
         public async Task<IActionResult> Index(LoginDTO loginDTO)
         {
             if(!ModelState.IsValid)

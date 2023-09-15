@@ -18,5 +18,22 @@ namespace Transportation.Business.Concrete
         {
             _repository = new UserRepository();
         }
+
+        // Repository Pattern disinda Asp.net core identity paketini yuklemedigimizden dolayi ordaki Sign in manager, user manager yaptigi
+        // is kurallarini biz burda default methodlarla tanimlamaya calisacagiz
+
+        public async Task<User?> LoginKontrol(string email, string password)
+        {
+            var user = await _repository.GetBy(p=>p.Email == email && p.Password== password);
+            // kullanicinin girdigi email ve password databasedeki verilerle karsilastiriliyor.
+            if(user != null)
+            {
+                return user;
+            }
+            return null;
+        }
+        
+
+
     }
 }
