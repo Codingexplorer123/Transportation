@@ -45,5 +45,11 @@ namespace Transportation.MVC.Controllers
             List<Claim> claims = new List<Claim>();
             return View();
         }
+        [HttpGet]
+        public async Task<IActionResult> Forget()
+        {
+            return View("Forget");
+        }
+
     }
 }
