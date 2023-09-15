@@ -35,7 +35,7 @@ namespace Transportation.MVC.Controllers
             }
             // burada modelstate.IsValid methodu ile model icerisinde belirttigimiz tum logindto annotationlarina girilen ifade uygunmu kontrol eder.
 
-            var user = userManager.GetAllInclude(u=>u.Email==loginDTO.Email && u.Password == loginDTO.Password).Result.FirstOrDefault();
+            var user = userManager.GetAllInclude(u=>u.Email==loginDTO.Email && u.Password == loginDTO.Password).ToString();
             // user tarafindan girilen veriler ile databasedeki veriler kontrol edilir
 
             if(user==null)

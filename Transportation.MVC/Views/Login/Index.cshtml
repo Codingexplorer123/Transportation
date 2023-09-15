@@ -35,7 +35,7 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
 			<div class="wrap-login100">
-				<form asp-controller="Login" asp-action ="Index" method="post" class="login100-form validate-form">
+				<form asp-controller="Login" asp-action="Index" method="post" class="login100-form validate-form">
 					<span class="login100-form-logo">
 						<i class="zmdi zmdi-landscape"></i>
 					</span>
@@ -45,12 +45,12 @@
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter username">
-						<input asp-for ="Email"class="input100" type="text" name="username" placeholder="Username">
+						<input asp-for="@Model.Email" class="input100" placeholder="Username">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input asp-for="Password"  class="input100" type="password" name="pass" placeholder="Password">
+						<input asp-for="@Model.Password" class="input100" placeholder="Password">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 
@@ -62,7 +62,7 @@
 					</div>
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn" asp-controller="Login" asp-action="index">
+						<button class="login100-form-btn" asp-controller="Login" asp-action="index" type="submit">
 							Login
 						</button>
 					</div>
