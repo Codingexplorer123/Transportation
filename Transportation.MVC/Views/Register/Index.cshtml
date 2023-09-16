@@ -1,4 +1,4 @@
-﻿
+﻿@model RegisterDTO
 @{
     ViewData["Title"] = "Index";
 }
@@ -124,33 +124,38 @@
                         <h4 class="mb-2">Kayit Olabilmek Icin</h4>
                         <p class="mb-4">Asagidaki bilgileri giriniz</p>
 
-                        <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+                        <form id="formAuthentication" class="mb-3" asp-action="Register" asp-controller="Register" method="POST">
                             <div class="mb-3">
-                                <label for="username" class="form-label">Kullanici Adi</label>
+                                <label asp-for="UserName" class="form-label">Kullanici Adi</label>
                                 <input type="text"
                                        class="form-control"
-                                       id="username"
-                                       name="username"
-                                       placeholder="Kullanici adiniz"
+                                       asp-for="UserName"                                       placeholder="Kullanici adiniz"
                                        autofocus />
                             </div>
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="text" class="form-control" id="email" name="email" placeholder="E-mailiniz" />
+                                <label asp-for="Email" class="form-label">Email</label>
+                                <input type="text" class="form-control" asp-for="Email" placeholder="E-mailiniz" />
                             </div>
                             <div class="mb-3 form-password-toggle">
                                 <label class="form-label" for="password">Sifre</label>
                                 <div class="input-group input-group-merge">
                                     <input type="password"
-                                           id="password"
-                                           class="form-control"
-                                           name="password"
+                                           class="form-control" asp-for="Password"      
                                            placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                                            aria-describedby="password" />
                                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                                 </div>
                             </div>
-
+                            <div class="mb-3 form-password-toggle">
+                                <label class="form-label" for="password">Sifre</label>
+                                <div class="input-group input-group-merge">
+                                    <input type="password"
+                                           class="form-control" asp-for="Repassword"
+                                           placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                           aria-describedby="password" />
+                                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                                </div>
+                            </div>
                             <div class="mb-3">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" />
@@ -160,7 +165,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <button class="btn btn-primary d-grid w-100">Kayit Ol</button>
+                            <button class="btn btn-primary d-grid w-100" type="submit">Kayit Ol</button>
                         </form>
 
                         <p class="text-center">

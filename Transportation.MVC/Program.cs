@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns;
 using Transportation.Data.Context;
 using Transportation.Data.DummyData;
+using Transportation.MVC.AutoMapperProfile;
 using Transportation.WebApi.Extensions;
 using TransportationEntity;
 
@@ -21,7 +22,7 @@ builder.Services.AddDbContext<TransportationDbContext>
 //EF Core  u ConfigureService metodu olan AddDbContext ile appsettings.json database ayarlarini kullanarak database imize erismesini sagladik. 
 
 builder.Services.AddTransportationServisleri();
-
+builder.Services.AddAutoMapper(typeof(TransportationProfile));
 // Extension klasorunde bulunan servicelerimizi kaydettik.
 //Identity Serviselerini Eklenmesi
 builder.Services.AddIdentity<MyUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<TransportationDbContext>();
@@ -67,7 +68,8 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
+    //app.UseExceptionHandler("/Home/Error");
+	app.UseDeveloperExceptionPage();
     // burada development asamasindayken alacagimiz hatalari detaylari ile programi calistirdigimizda gostermesini istedik.
 }
 
