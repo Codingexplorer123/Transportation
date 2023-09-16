@@ -1,22 +1,26 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Security.Claims;
 using Transportation.Business.Abstract;
 using Transportation.MVC.Models.DTOs;
+using TransportationEntity;
 
 namespace Transportation.MVC.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly IUserManager userManager;
-        private readonly IRoleManager roleManager;
+        private readonly UserManager<MyUser> userManager;
+        private readonly RoleManager<IdentityRole> roleManager;
+        private readonly SignInManager<MyUser> signInManager;
 
-        public LoginController(IUserManager userManager, IRoleManager roleManager)
+        public LoginController(UserManager<MyUser> userManager, RoleManager<IdentityRole> roleManager
+            ,SignInManager<MyUser> signInManager)
         {
             this.userManager = userManager;
             this.roleManager = roleManager;
-
+            this.signInManager = signInManager;
         }
         public IActionResult Index()
         {
@@ -34,17 +38,29 @@ namespace Transportation.MVC.Controllers
                 return View(loginDTO);
             }
             // burada modelstate.IsValid methodu ile model icerisinde belirttigimiz tum logindto annotationlarina girilen ifade uygunmu kontrol eder.
+            var user2=await  userManager.FindByEmailAsync(loginDTO.Email);
 
-            var user = userManager.GetAllInclude(u=>u.Email==loginDTO.Email && u.Password == loginDTO.Password).ToString();
+            var roles =await  userManager.GetRolesAsync(user2);
+
+            var result = await signInManager.PasswordSignInAsync(user2, loginDTO.Password, (bool)loginDTO.RememberMe, true);
+            
+            //var user = userManager.GetAllInclude(u=>u.Email==loginDTO.Email && u.Password == loginDTO.Password).ToString();
             // user tarafindan girilen veriler ile databasedeki veriler kontrol edilir
 
-            if(user==null)
+
+            if (!result.Succeeded)
             {
-                ModelState.AddModelError("", "Kullanici Adi Yada Sifre Hatali");
+                ModelState.AddModelError("", "Email yada sifre hatalidir");
                 return View(loginDTO);
             }
-           
-            return RedirectToAction("Index","Nakliye");
+            foreach (var role in roles)
+            {
+                if(role=="Admin")
+                    return RedirectToAction("Index", "Nakliye", new { Area =role});
+
+            }
+
+            return RedirectToAction("Index","Home");
         }
         [HttpGet]
         public async Task<IActionResult> Forget()
