@@ -14,6 +14,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 // MVC i icin gereken Kutuphanede hazir bulunan Serviceleri cagiriyor.
+builder.Services.AddRazorPages()
+    .AddRazorPagesOptions(options =>
+    {
+        options.Conventions.AddAreaPageRoute("Admin", "/AdminHome/Index", "Admin");
+    });
 
 builder.Services.AddTransient<DataGeneratorArac>();
 // https://learn.microsoft.com/en-us/ef/core/dbcontext-configuration/ burada database e serviceleri kullanarak nasil erisildigi detayli anlatiliyor
@@ -25,8 +30,8 @@ builder.Services.AddTransportationServisleri();
 builder.Services.AddAutoMapper(typeof(TransportationProfile));
 // Extension klasorunde bulunan servicelerimizi kaydettik.
 //Identity Serviselerini Eklenmesi
-builder.Services.AddIdentity<MyUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<TransportationDbContext>();
-
+builder.Services.AddIdentity<MyUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<TransportationDbContext>();
+// burdaki SigIN.RequireConfirmedAccount= true olursa login sonucu not allowed oluyor admin controller a dusmuyoruz.
 //Identity'yi Configure Etme
 builder.Services.Configure<IdentityOptions>(options =>
 {
@@ -82,9 +87,16 @@ app.UseAuthentication();
 app.UseAuthorization();
 // Authorization yapmadik henuz yapacagiz. Authentication yaptiktan sonra
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "admin",
+        pattern: "{area:exists}/{controller=AdminHome}/{action=Index}/{id?}");
+
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+});
 
 // Buradaki default Routeda eger http requestte controller belirtilmemisse ilk olarak Home Controller duseceginiz vs. belirtiyor.
 app.Run();

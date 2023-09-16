@@ -21,7 +21,7 @@ namespace Transportation.Data.Context
         {
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlServer
-            ("Server =.; Database=Transportation; Trusted_Connection=True;TrustServerCertificate=true");
+            ("Server =(localdb)\\MSSqlLocalDb; Database=Transportation; Trusted_Connection=True;TrustServerCertificate=true");
             // Lokalimdeki SQL Server Baglantim database calismasi icin connectionstring ifadesini degistiriniz.
         }
         public TransportationDbContext()

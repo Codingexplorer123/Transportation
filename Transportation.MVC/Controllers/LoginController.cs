@@ -42,11 +42,9 @@ namespace Transportation.MVC.Controllers
 
             var roles =await  userManager.GetRolesAsync(user2);
 
-            var result = await signInManager.PasswordSignInAsync(user2, loginDTO.Password, (bool)loginDTO.RememberMe, true);
+            var result = await signInManager.PasswordSignInAsync(user2, loginDTO.Password, true, false);
             
-            //var user = userManager.GetAllInclude(u=>u.Email==loginDTO.Email && u.Password == loginDTO.Password).ToString();
-            // user tarafindan girilen veriler ile databasedeki veriler kontrol edilir
-
+          
 
             if (!result.Succeeded)
             {
@@ -55,7 +53,7 @@ namespace Transportation.MVC.Controllers
             }
             foreach (var role in roles)
             {
-                if(role=="Admin")
+                if(role=="admin")
                     return RedirectToAction("Index", "Nakliye", new { Area =role});
 
             }
