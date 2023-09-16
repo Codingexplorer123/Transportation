@@ -15,5 +15,9 @@ namespace TransportationEntity
         public string? Area { get; set; }
         public string? Class { get; set; }
         public string? Icon { get; set; }
+
+        public string MyUserId { get; set; }
+
+        public MyUser User { get; set; }
     }
 }

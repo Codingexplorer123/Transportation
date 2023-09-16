@@ -119,7 +119,7 @@
                         <!-- /Logo -->
                         <h4 class="mb-2">Sifremi Unuttum 🔒</h4>
                         <p class="mb-4">Sifrenizi yenilemek icin email adresinizi giriniz</p>
-                        <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+                        <form id="formAuthentication" class="mb-3" asp-action="Forget" asp-controller="Login" method="POST">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="text"
@@ -129,7 +129,7 @@
                                        placeholder="E-mailiniz"
                                        autofocus />
                             </div>
-                            <button class="btn btn-primary d-grid w-100">Resetleme linki gonder</button>
+                            <button class="btn btn-primary d-grid w-100" type="submit">Resetleme linki gonder</button>
                         </form>
                         <div class="text-center">
                             <a asp-controller="Login" asp-action="Index" class="d-flex align-items-center justify-content-center">

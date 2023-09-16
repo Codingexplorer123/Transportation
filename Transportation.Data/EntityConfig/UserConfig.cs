@@ -10,9 +10,9 @@ using TransportationEntity;
 
 namespace Transportation.Data.EntityConfig
 {
-    public class UserConfig: IEntityTypeConfiguration<User>
+    public class UserConfig: IEntityTypeConfiguration<MyUser>
     {
-        public void Configure(EntityTypeBuilder<User>builder)
+        public void Configure(EntityTypeBuilder<MyUser>builder)
         // Burdaki metod ile DbContext icerisindeki OnModelCreating Metodumuz sismesin diye entity configurasyonlari buraya
         //tanimlanmistir. Detayli bilgi icin https://learn.microsoft.com/en-us/ef/core/modeling/ sayfasindaki Grouping Configuration bakabilirsiniz.
         {
@@ -34,7 +34,7 @@ namespace Transportation.Data.EntityConfig
 
             //Test Asamasinda kullanilmasi icin sistem ayaga kaldirilirken data seeding ile bir kullanici olusturuyorum
             builder.HasData(
-                new User
+                new MyUser
                 {
                     UserId = 1,
                     Name = "Berk",

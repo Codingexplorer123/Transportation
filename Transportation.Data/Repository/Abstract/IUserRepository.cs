@@ -7,7 +7,7 @@ using TransportationEntity;
 
 namespace Transportation.Data.Repository.Abstract
 {
-    public interface IUserRepository : IBaseRepository<User>
+    public interface IUserRepository : IBaseRepository<MyUser>
     {
     }
 }

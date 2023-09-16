@@ -8,7 +8,7 @@ using TransportationEntity;
 
 namespace Transportation.Data.Repository.Concrete
 {
-    public class UserRepository: BaseRepository<User>,IUserRepository
+    public class UserRepository: BaseRepository<MyUser>,IUserRepository
     {
     }
 }

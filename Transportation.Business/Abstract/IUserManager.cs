@@ -7,7 +7,7 @@ using TransportationEntity;
 
 namespace Transportation.Business.Abstract
 {
-    public interface IUserManager : IManagerBase<User>
+    public interface IUserManager : IManagerBase<MyUser>
     {
 
     }

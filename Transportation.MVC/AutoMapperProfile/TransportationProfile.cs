@@ -8,7 +8,7 @@ namespace Transportation.MVC.AutoMapperProfile
     {
         public TransportationProfile()
         {
-            CreateMap<LoginDTO, User>();
+            CreateMap<LoginDTO, MyUser>();
         }
         
     }

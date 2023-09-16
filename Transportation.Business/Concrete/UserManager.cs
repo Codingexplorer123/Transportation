@@ -10,7 +10,7 @@ using TransportationEntity;
 
 namespace Transportation.Business.Concrete
 {
-    public class UserManager : ManagerBase<User>, IUserManager
+    public class UserManager : ManagerBase<MyUser>, IUserManager
     {
         private readonly IUserRepository _repository;
 
@@ -22,7 +22,7 @@ namespace Transportation.Business.Concrete
         // Repository Pattern disinda Asp.net core identity paketini yuklemedigimizden dolayi ordaki Sign in manager, user manager yaptigi
         // is kurallarini biz burda default methodlarla tanimlamaya calisacagiz
 
-        public async Task<User?> LoginKontrol(string email, string password)
+        public async Task<MyUser?> LoginKontrol(string email, string password)
         {
             var user = await _repository.GetBy(p=>p.Email == email && p.Password== password);
             // kullanicinin girdigi email ve password databasedeki verilerle karsilastiriliyor.

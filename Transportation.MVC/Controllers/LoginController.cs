@@ -51,6 +51,14 @@ namespace Transportation.MVC.Controllers
         {
             return View("Forget");
         }
+		[HttpPost]
+		public async Task<IActionResult> Forget(string email)
+		{
+            if (string.IsNullOrEmpty(email) && string.IsNullOrWhiteSpace(email))
+            {
 
-    }
+            }
+			return View("Forget");
+		}
+	}
 }

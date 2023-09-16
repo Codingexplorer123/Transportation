@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,11 @@ using TransportationEntity;
 
 namespace Transportation.Data.Context
 {
-    public class TransportationDbContext:DbContext
+    public class TransportationDbContext:IdentityDbContext<MyUser>
     {
+
+
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
@@ -32,7 +36,7 @@ namespace Transportation.Data.Context
         public DbSet<Nakliye>Nakliyeler { get; set; }
         public DbSet<Arac>Araclar { get; set; }
         public DbSet<Rezervasyon> Rezervasyonlar { get; set; }
-        public DbSet<User> Users { get; set; }
+      
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

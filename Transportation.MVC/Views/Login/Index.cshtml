@@ -46,7 +46,7 @@
 
 					<div class="wrap-input100 validate-input" data-validate="Enter username">
 						<input asp-for="@Model.Email" class="input100" placeholder="Username">
-						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+						<span class="focus-input100" data-placeholder="&#xf207;" asp-validation-for="Email"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">

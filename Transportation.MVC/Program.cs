@@ -1,8 +1,10 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns;
 using Transportation.Data.Context;
 using Transportation.Data.DummyData;
 using Transportation.WebApi.Extensions;
+using TransportationEntity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,7 +23,44 @@ builder.Services.AddDbContext<TransportationDbContext>
 builder.Services.AddTransportationServisleri();
 
 // Extension klasorunde bulunan servicelerimizi kaydettik.
+//Identity Serviselerini Eklenmesi
+builder.Services.AddIdentity<MyUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<TransportationDbContext>();
 
+//Identity'yi Configure Etme
+builder.Services.Configure<IdentityOptions>(options =>
+{
+	// Password settings.
+	options.Password.RequireDigit = false;
+	options.Password.RequireLowercase = false;
+	options.Password.RequireNonAlphanumeric = false;
+	options.Password.RequireUppercase = false;
+	options.Password.RequiredLength = 3;
+	options.Password.RequiredUniqueChars = 1;
+
+	// Lockout settings.
+	options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+	options.Lockout.MaxFailedAccessAttempts = 5;
+	options.Lockout.AllowedForNewUsers = true;
+
+	// User settings.
+
+	options.User.RequireUniqueEmail = true;
+	options.SignIn.RequireConfirmedEmail = false;
+	options.SignIn.RequireConfirmedPhoneNumber = false;
+});
+
+//Cookie Ayarlari
+builder.Services.ConfigureApplicationCookie(options =>
+{
+	// Cookie settings
+	options.Cookie.HttpOnly = true;
+	options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+
+	options.LoginPath = "/Login/Index";
+	options.AccessDeniedPath = "/Login/AccessDenied";
+	options.LogoutPath = "/Login/Logout";
+	options.SlidingExpiration = true;
+});
 
 var app = builder.Build();
 
@@ -37,6 +76,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 // Client tarafindan gelen http requestlerin icerisindeki Urlde cozumleme yapar. Ona Gore ilgili controller in gerekli action metoduna istek duser.
+app.UseAuthentication();
 app.UseAuthorization();
 // Authorization yapmadik henuz yapacagiz. Authentication yaptiktan sonra
 
