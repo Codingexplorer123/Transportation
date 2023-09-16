@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Transportation.Data.Context;
 
@@ -11,9 +12,11 @@ using Transportation.Data.Context;
 namespace Transportation.Data.Migrations
 {
     [DbContext(typeof(TransportationDbContext))]
-    partial class TransportationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230916111537_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,14 +50,6 @@ namespace Transportation.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "68b9679a-f507-4094-9066-19cb0713e1d8",
-                            Name = "admin",
-                            NormalizedName = "ADMIN"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -142,13 +137,6 @@ namespace Transportation.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "dadc3d4d-9bf1-4921-9bb8-c9c67d21421a",
-                            RoleId = "68b9679a-f507-4094-9066-19cb0713e1d8"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -225,42 +213,42 @@ namespace Transportation.Data.Migrations
                         new
                         {
                             AracId = 1,
-                            AracPlakaNo = "TR 52 XW 602",
-                            AracSoforuIsim = "Precious",
-                            AracSoforuSoyisim = "Stanton",
-                            AracSoforuTelNo = "(555) 979-8769",
-                            AracTipi = 3,
-                            FirmaTelNo = "(069) 106-2504"
+                            AracPlakaNo = "TR 47 PO 201",
+                            AracSoforuIsim = "Emerald",
+                            AracSoforuSoyisim = "Grady",
+                            AracSoforuTelNo = "(368) 140-6680",
+                            AracTipi = 4,
+                            FirmaTelNo = "(069) 253-1700"
                         },
                         new
                         {
                             AracId = 2,
-                            AracPlakaNo = "TR 56 QX 929",
-                            AracSoforuIsim = "Nathanial",
-                            AracSoforuSoyisim = "Langworth",
-                            AracSoforuTelNo = "(250) 306-7885",
-                            AracTipi = 2,
-                            FirmaTelNo = "(071) 570-4309"
+                            AracPlakaNo = "TR 70 CF 437",
+                            AracSoforuIsim = "Jakob",
+                            AracSoforuSoyisim = "Mueller",
+                            AracSoforuTelNo = "(633) 272-4847",
+                            AracTipi = 1,
+                            FirmaTelNo = "(035) 149-1551"
                         },
                         new
                         {
                             AracId = 3,
-                            AracPlakaNo = "TR 62 PC 700",
-                            AracSoforuIsim = "Donald",
-                            AracSoforuSoyisim = "Davis",
-                            AracSoforuTelNo = "(317) 712-1572",
-                            AracTipi = 1,
-                            FirmaTelNo = "(028) 492-0754"
+                            AracPlakaNo = "TR 12 WK 720",
+                            AracSoforuIsim = "Gust",
+                            AracSoforuSoyisim = "Morissette",
+                            AracSoforuTelNo = "(568) 299-1606",
+                            AracTipi = 2,
+                            FirmaTelNo = "(035) 584-2270"
                         },
                         new
                         {
                             AracId = 4,
-                            AracPlakaNo = "TR 23 BF 485",
-                            AracSoforuIsim = "Maci",
-                            AracSoforuSoyisim = "Romaguera",
-                            AracSoforuTelNo = "(510) 003-3934",
-                            AracTipi = 3,
-                            FirmaTelNo = "(081) 505-6758"
+                            AracPlakaNo = "TR 68 LR 898",
+                            AracSoforuIsim = "Kole",
+                            AracSoforuSoyisim = "Spencer",
+                            AracSoforuTelNo = "(241) 401-9649",
+                            AracTipi = 1,
+                            FirmaTelNo = "(042) 765-1896"
                         });
                 });
 
@@ -330,22 +318,6 @@ namespace Transportation.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "dadc3d4d-9bf1-4921-9bb8-c9c67d21421a",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "cbccbe2d-c0a0-4a70-a021-a94b6b77b3aa",
-                            Email = "admin@qwe.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "80355ad4-56d8-4b88-bea6-ffa1e2e860b2",
-                            TCNo = 0L,
-                            TwoFactorEnabled = false,
-                            UserName = "admin"
-                        });
                 });
 
             modelBuilder.Entity("TransportationEntity.Nakliye", b =>
@@ -381,26 +353,26 @@ namespace Transportation.Data.Migrations
                         new
                         {
                             NakliyeId = 1,
-                            NakliyeYapildimi = false,
-                            TalepTarihi = new DateTime(2021, 5, 3, 12, 23, 29, 629, DateTimeKind.Local).AddTicks(161)
+                            NakliyeYapildimi = true,
+                            TalepTarihi = new DateTime(2021, 4, 11, 14, 57, 21, 662, DateTimeKind.Local).AddTicks(3490)
                         },
                         new
                         {
                             NakliyeId = 2,
-                            NakliyeYapildimi = false,
-                            TalepTarihi = new DateTime(2020, 12, 15, 17, 20, 41, 314, DateTimeKind.Local).AddTicks(3523)
+                            NakliyeYapildimi = true,
+                            TalepTarihi = new DateTime(2020, 12, 29, 22, 44, 13, 193, DateTimeKind.Local).AddTicks(2864)
                         },
                         new
                         {
                             NakliyeId = 3,
                             NakliyeYapildimi = true,
-                            TalepTarihi = new DateTime(2023, 3, 20, 8, 5, 41, 796, DateTimeKind.Local).AddTicks(7726)
+                            TalepTarihi = new DateTime(2022, 6, 10, 22, 59, 16, 954, DateTimeKind.Local).AddTicks(2486)
                         },
                         new
                         {
                             NakliyeId = 4,
                             NakliyeYapildimi = false,
-                            TalepTarihi = new DateTime(2021, 10, 6, 2, 3, 29, 68, DateTimeKind.Local).AddTicks(2713)
+                            TalepTarihi = new DateTime(2021, 8, 9, 10, 15, 36, 190, DateTimeKind.Local).AddTicks(6349)
                         });
                 });
 
@@ -441,26 +413,26 @@ namespace Transportation.Data.Migrations
                         new
                         {
                             RezervasyonId = 1,
-                            NakliyeFirmasiAdi = "Kuhn - Berge Logistik",
-                            NakliyeFirmasiEmail = "Kuhn-BergeLogistik_Krajcik55@hotmail.com"
+                            NakliyeFirmasiAdi = "Halvorson, Little and Wuckert Ulastirma",
+                            NakliyeFirmasiEmail = "HalvorsonLittleandWuckertUlastirma96@hotmail.com"
                         },
                         new
                         {
                             RezervasyonId = 2,
-                            NakliyeFirmasiAdi = "Leffler, Hoeger and Mayert Nakliyat",
-                            NakliyeFirmasiEmail = "LefflerHoegerandMayertNakliyat_Beier@yahoo.com"
+                            NakliyeFirmasiAdi = "Beier - Strosin Logistik",
+                            NakliyeFirmasiEmail = "Beier-StrosinLogistik20@hotmail.com"
                         },
                         new
                         {
                             RezervasyonId = 3,
-                            NakliyeFirmasiAdi = "Yundt, Johnson and Gleichner Logistik",
-                            NakliyeFirmasiEmail = "YundtJohnsonandGleichnerLogistik.Mitchell@yahoo.com"
+                            NakliyeFirmasiAdi = "Lowe Inc Nakliyat",
+                            NakliyeFirmasiEmail = "LoweIncNakliyat.Hamill@yahoo.com"
                         },
                         new
                         {
                             RezervasyonId = 4,
-                            NakliyeFirmasiAdi = "Kris and Sons Logistik",
-                            NakliyeFirmasiEmail = "KrisandSonsLogistik_Hilll82@gmail.com"
+                            NakliyeFirmasiAdi = "Thompson, Jacobson and Harvey Logistik",
+                            NakliyeFirmasiEmail = "ThompsonJacobsonandHarveyLogistik.Sawayn86@yahoo.com"
                         });
                 });
 

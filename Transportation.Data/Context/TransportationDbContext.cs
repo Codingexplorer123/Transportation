@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace Transportation.Data.Context
         {
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlServer
-            ("Server =(localdb)\\MSSqlLocalDb; Database=Transportation; Trusted_Connection=True;TrustServerCertificate=true");
+            ("Server =.; Database=Transportation; Trusted_Connection=True;TrustServerCertificate=true");
             // Lokalimdeki SQL Server Baglantim database calismasi icin connectionstring ifadesini degistiriniz.
         }
         public TransportationDbContext()
@@ -48,6 +49,14 @@ namespace Transportation.Data.Context
             modelBuilder.Entity<Arac>().HasData(DataGeneratorArac.AracListesi(5));
             modelBuilder.Entity<Nakliye>().HasData(DataGeneratorNakliye.NakliyeListesi(5));
             modelBuilder.Entity<Rezervasyon>().HasData(DataGeneratorRezervasyon.RezervasyonListesi(5));
-        }
-    }
+            var UserID = Guid.NewGuid().ToString();
+
+			modelBuilder.Entity<MyUser>().HasData(new MyUser { Id = UserID, UserName = "admin", Email = "admin@qwe.com" });
+            var roleID = Guid.NewGuid().ToString();
+
+			modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole { Id=roleID,Name="admin",NormalizedName="ADMIN"});
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>() { RoleId = roleID, UserId = UserID });
+
+		}
+	}
 }

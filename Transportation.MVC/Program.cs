@@ -4,6 +4,7 @@ using Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns;
 using Transportation.Data.Context;
 using Transportation.Data.DummyData;
 using Transportation.MVC.AutoMapperProfile;
+using Transportation.MVC.Models;
 using Transportation.WebApi.Extensions;
 using TransportationEntity;
 
@@ -20,7 +21,6 @@ builder.Services.AddDbContext<TransportationDbContext>
     (options => options.UseSqlServer(builder.Configuration.GetConnectionString("Transportation")));
 
 //EF Core  u ConfigureService metodu olan AddDbContext ile appsettings.json database ayarlarini kullanarak database imize erismesini sagladik. 
-
 builder.Services.AddTransportationServisleri();
 builder.Services.AddAutoMapper(typeof(TransportationProfile));
 // Extension klasorunde bulunan servicelerimizi kaydettik.
