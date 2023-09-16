@@ -54,7 +54,7 @@ namespace Transportation.MVC.Controllers
             foreach (var role in roles)
             {
                 if(role=="admin")
-                    return RedirectToAction("Index", "Nakliye", new { Area =role});
+                    return RedirectToAction("Index", "Home", new { Area =role});
 
             }
 
