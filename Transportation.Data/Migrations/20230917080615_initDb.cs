@@ -232,21 +232,31 @@ namespace Transportation.Data.Migrations
                 columns: new[] { "AracId", "AracPlakaNo", "AracSoforuIsim", "AracSoforuSoyisim", "AracSoforuTelNo", "AracTipi", "FirmaTelNo", "NakliyeId", "RezervasyonId" },
                 values: new object[,]
                 {
-                    { 1, "TR 46 DR 068", "Esta", "Lemke", "(611) 587-7749", 1, "(054) 655-1589", null, null },
-                    { 2, "TR 61 SQ 602", "Francisca", "Cassin", "(029) 741-3462", 2, "(011) 733-3169", null, null },
-                    { 3, "TR 64 HU 068", "Ocie", "Glover", "(205) 962-7343", 2, "(040) 048-7244", null, null },
-                    { 4, "TR 51 BE 926", "Angelita", "Rolfson", "(735) 593-3785", 4, "(094) 569-4291", null, null }
+                    { 1, "TR 63 QL 020", "Gordon", "Runolfsdottir", "(741) 343-9712", 2, "(014) 100-0306", null, null },
+                    { 2, "TR 10 NC 259", "Sage", "Cruickshank", "(699) 914-4986", 2, "(079) 169-9066", null, null },
+                    { 3, "TR 23 GA 325", "Myah", "Weber", "(978) 300-3122", 4, "(026) 882-9355", null, null },
+                    { 4, "TR 80 ET 849", "Loy", "Collier", "(534) 960-9691", 3, "(063) 397-7372", null, null }
                 });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "dcb592f3-4154-4e22-9569-bcc6f0370acb", null, "admin", "ADMIN" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TCNo", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "436dd851-3303-47a0-92d4-000fa64f7d96", 0, "31cbf086-9324-4024-89e5-96be4f55c12f", "admin@qwe.com", false, false, null, null, null, null, null, false, "39af88b7-d11f-407a-abbb-2d4807765e9f", 0L, false, "admin" });
 
             migrationBuilder.InsertData(
                 table: "Nakliyeler",
                 columns: new[] { "NakliyeId", "Aciklama", "AracId", "MusteriDegerlendirmeleri", "NakliyeYapildimi", "TalepTarihi" },
                 values: new object[,]
                 {
-                    { 1, null, null, null, true, new DateTime(2023, 1, 1, 0, 0, 43, 817, DateTimeKind.Local).AddTicks(9665) },
-                    { 2, null, null, null, true, new DateTime(2023, 5, 17, 15, 1, 52, 921, DateTimeKind.Local).AddTicks(8708) },
-                    { 3, null, null, null, false, new DateTime(2022, 8, 2, 12, 27, 28, 864, DateTimeKind.Local).AddTicks(5518) },
-                    { 4, null, null, null, true, new DateTime(2023, 4, 27, 16, 15, 37, 136, DateTimeKind.Local).AddTicks(6951) }
+                    { 1, null, null, null, false, new DateTime(2023, 2, 18, 5, 49, 26, 159, DateTimeKind.Local).AddTicks(4649) },
+                    { 2, null, null, null, false, new DateTime(2023, 5, 12, 15, 29, 59, 71, DateTimeKind.Local).AddTicks(9417) },
+                    { 3, null, null, null, false, new DateTime(2020, 10, 19, 10, 58, 5, 919, DateTimeKind.Local).AddTicks(2357) },
+                    { 4, null, null, null, false, new DateTime(2022, 2, 19, 20, 6, 18, 688, DateTimeKind.Local).AddTicks(2674) }
                 });
 
             migrationBuilder.InsertData(
@@ -254,11 +264,16 @@ namespace Transportation.Data.Migrations
                 columns: new[] { "RezervasyonId", "NakliyeFirmasiAdi", "NakliyeFirmasiEmail", "NakliyeId", "RezervasyonTarihi" },
                 values: new object[,]
                 {
-                    { 1, "O'Connell - Harvey Tasimacilik", "OConnell-HarveyTasimacilik.Bernhard90@yahoo.com", null, null },
-                    { 2, "Littel, Murray and VonRueden Ulastirma", "LittelMurrayandVonRuedenUlastirma6@yahoo.com", null, null },
-                    { 3, "Marquardt, Legros and Lockman Logistik", "MarquardtLegrosandLockmanLogistik.Huel@gmail.com", null, null },
-                    { 4, "Dickens LLC Tasimacilik", "DickensLLCTasimacilik_Carroll48@gmail.com", null, null }
+                    { 1, "Streich - Hodkiewicz Nakliyat", "Streich-HodkiewiczNakliyat.Williamson26@gmail.com", null, null },
+                    { 2, "Sauer LLC Nakliyat", "SauerLLCNakliyat.Rowe61@hotmail.com", null, null },
+                    { 3, "Johns, Ruecker and Walker Logistik", "JohnsRueckerandWalkerLogistik.Hilpert@yahoo.com", null, null },
+                    { 4, "Kassulke - Padberg Ulastirma", "Kassulke-PadbergUlastirma55@hotmail.com", null, null }
                 });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { "dcb592f3-4154-4e22-9569-bcc6f0370acb", "436dd851-3303-47a0-92d4-000fa64f7d96" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Araclar_AracPlakaNo",

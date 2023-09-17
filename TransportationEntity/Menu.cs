@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,8 +17,8 @@ namespace TransportationEntity
         public string? Class { get; set; }
         public string? Icon { get; set; }
 
-        public string MyUserId { get; set; }
+        public string? RoleId { get; set; }
 
-        public MyUser User { get; set; }
+        public IdentityRole? Role { get; set; }
     }
 }

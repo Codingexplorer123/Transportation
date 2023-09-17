@@ -23,7 +23,8 @@ namespace Transportation.WebApi.Extensions
             services.AddScoped<IAracRepository, AracRepository>();
             services.AddScoped<IAracManager,AracManager>();             // Arac sinifindaki Repository pattern ve business katmani servisleri eklendi.
 
-         
+            services.AddScoped<IMenuRepository, MenuRepository>();
+            services.AddScoped<IMenuManager, MenuManager>();
             return services;
 
         }

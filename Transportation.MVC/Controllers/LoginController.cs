@@ -51,14 +51,15 @@ namespace Transportation.MVC.Controllers
                 ModelState.AddModelError("", "Email yada sifre hatalidir");
                 return View(loginDTO);
             }
-            foreach (var role in roles)
-            {
-                if(role=="admin")
-                    return RedirectToAction("Index", "Home", new { Area =role});
+            //foreach (var role in roles)
+            //{
+            //    if (role == "admin")
+            //        return RedirectToAction("Index", "Home", new { Area = role });
 
-            }
 
-            return RedirectToAction("Index","Home");
+            //}
+
+            return RedirectToAction("Index", "Home", new { Area = "Admin" });
         }
         [HttpGet]
         public async Task<IActionResult> Forget()

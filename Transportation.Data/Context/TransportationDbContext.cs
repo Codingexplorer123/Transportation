@@ -37,7 +37,7 @@ namespace Transportation.Data.Context
         public DbSet<Nakliye>Nakliyeler { get; set; }
         public DbSet<Arac>Araclar { get; set; }
         public DbSet<Rezervasyon> Rezervasyonlar { get; set; }
-      
+        public DbSet<Menu> Menuler { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

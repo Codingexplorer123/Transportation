@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Transportation.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class second : Migration
+    public partial class addMenu : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -14,234 +14,266 @@ namespace Transportation.Data.Migrations
             migrationBuilder.DeleteData(
                 table: "AspNetUserRoles",
                 keyColumns: new[] { "RoleId", "UserId" },
-                keyValues: new object[] { "68b9679a-f507-4094-9066-19cb0713e1d8", "dadc3d4d-9bf1-4921-9bb8-c9c67d21421a" });
+                keyValues: new object[] { "dcb592f3-4154-4e22-9569-bcc6f0370acb", "436dd851-3303-47a0-92d4-000fa64f7d96" });
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "68b9679a-f507-4094-9066-19cb0713e1d8");
+                keyValue: "dcb592f3-4154-4e22-9569-bcc6f0370acb");
 
             migrationBuilder.DeleteData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
-                keyValue: "dadc3d4d-9bf1-4921-9bb8-c9c67d21421a");
+                keyValue: "436dd851-3303-47a0-92d4-000fa64f7d96");
+
+            migrationBuilder.CreateTable(
+                name: "Menuler",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MenuAdi = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Controller = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Action = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Area = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Class = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    Icon = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Menuler", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Menuler_AspNetRoles_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "AspNetRoles",
+                        principalColumn: "Id");
+                });
 
             migrationBuilder.UpdateData(
                 table: "Araclar",
                 keyColumn: "AracId",
                 keyValue: 1,
                 columns: new[] { "AracPlakaNo", "AracSoforuIsim", "AracSoforuSoyisim", "AracSoforuTelNo", "AracTipi", "FirmaTelNo" },
-                values: new object[] { "TR 65 EW 457", "Laurence", "Strosin", "(266) 894-1520", 1, "(023) 425-4748" });
+                values: new object[] { "TR 43 QZ 914", "Elsa", "Ullrich", "(549) 835-0454", 1, "(079) 042-3094" });
 
             migrationBuilder.UpdateData(
                 table: "Araclar",
                 keyColumn: "AracId",
                 keyValue: 2,
-                columns: new[] { "AracPlakaNo", "AracSoforuIsim", "AracSoforuSoyisim", "AracSoforuTelNo", "FirmaTelNo" },
-                values: new object[] { "TR 20 JN 182", "Urban", "Murray", "(378) 400-9151", "(064) 432-4919" });
+                columns: new[] { "AracPlakaNo", "AracSoforuIsim", "AracSoforuSoyisim", "AracSoforuTelNo", "AracTipi", "FirmaTelNo" },
+                values: new object[] { "TR 30 XX 355", "Winfield", "Smitham", "(853) 507-0534", 4, "(045) 566-7404" });
 
             migrationBuilder.UpdateData(
                 table: "Araclar",
                 keyColumn: "AracId",
                 keyValue: 3,
-                columns: new[] { "AracPlakaNo", "AracSoforuIsim", "AracSoforuSoyisim", "AracSoforuTelNo", "AracTipi", "FirmaTelNo" },
-                values: new object[] { "TR 59 PT 941", "Devyn", "Weber", "(854) 453-6259", 3, "(040) 764-6649" });
+                columns: new[] { "AracPlakaNo", "AracSoforuIsim", "AracSoforuSoyisim", "AracSoforuTelNo", "FirmaTelNo" },
+                values: new object[] { "TR 59 FK 544", "Jordan", "Kohler", "(843) 405-2847", "(091) 069-9610" });
 
             migrationBuilder.UpdateData(
                 table: "Araclar",
                 keyColumn: "AracId",
                 keyValue: 4,
                 columns: new[] { "AracPlakaNo", "AracSoforuIsim", "AracSoforuSoyisim", "AracSoforuTelNo", "AracTipi", "FirmaTelNo" },
-                values: new object[] { "TR 62 XB 730", "Tamia", "Hyatt", "(906) 677-9319", 2, "(044) 239-0676" });
+                values: new object[] { "TR 25 XO 792", "Trevion", "Gutkowski", "(715) 710-9852", 1, "(020) 258-9003" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "a3a04333-bca2-4fea-a0ef-5c334c79de81", null, "admin", "ADMIN" });
+                values: new object[] { "a1dabf83-9801-425a-86aa-fdb10dbc62c4", null, "admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TCNo", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "b91f23f9-c4dc-4aa3-b1b5-27b3d8699556", 0, "3b55ad96-259e-4dfb-ba26-1e9514dda4c1", "admin@qwe.com", false, false, null, null, null, null, null, false, "b9787754-8f19-4694-92a9-f1b84d6d33c5", 0L, false, "admin" });
+                values: new object[] { "c881d303-8d8a-411b-a683-d25a1deeecef", 0, "80791bdc-f9a4-4962-bb2b-c836576fef29", "admin@qwe.com", false, false, null, null, null, null, null, false, "b9939e5f-b18e-4c5a-811a-83f206361d7a", 0L, false, "admin" });
 
             migrationBuilder.UpdateData(
                 table: "Nakliyeler",
                 keyColumn: "NakliyeId",
                 keyValue: 1,
-                columns: new[] { "NakliyeYapildimi", "TalepTarihi" },
-                values: new object[] { true, new DateTime(2021, 5, 6, 10, 36, 44, 706, DateTimeKind.Local).AddTicks(4216) });
+                column: "TalepTarihi",
+                value: new DateTime(2021, 12, 24, 6, 46, 40, 784, DateTimeKind.Local).AddTicks(7908));
 
             migrationBuilder.UpdateData(
                 table: "Nakliyeler",
                 keyColumn: "NakliyeId",
                 keyValue: 2,
                 columns: new[] { "NakliyeYapildimi", "TalepTarihi" },
-                values: new object[] { true, new DateTime(2022, 2, 12, 10, 34, 49, 948, DateTimeKind.Local).AddTicks(226) });
+                values: new object[] { true, new DateTime(2021, 11, 7, 15, 56, 49, 117, DateTimeKind.Local).AddTicks(2537) });
 
             migrationBuilder.UpdateData(
                 table: "Nakliyeler",
                 keyColumn: "NakliyeId",
                 keyValue: 3,
                 column: "TalepTarihi",
-                value: new DateTime(2021, 1, 26, 15, 27, 49, 879, DateTimeKind.Local).AddTicks(9545));
+                value: new DateTime(2021, 5, 19, 13, 3, 18, 641, DateTimeKind.Local).AddTicks(8139));
 
             migrationBuilder.UpdateData(
                 table: "Nakliyeler",
                 keyColumn: "NakliyeId",
                 keyValue: 4,
-                column: "TalepTarihi",
-                value: new DateTime(2021, 10, 18, 14, 56, 46, 853, DateTimeKind.Local).AddTicks(9699));
+                columns: new[] { "NakliyeYapildimi", "TalepTarihi" },
+                values: new object[] { true, new DateTime(2020, 10, 23, 20, 53, 37, 885, DateTimeKind.Local).AddTicks(8822) });
 
             migrationBuilder.UpdateData(
                 table: "Rezervasyonlar",
                 keyColumn: "RezervasyonId",
                 keyValue: 1,
                 columns: new[] { "NakliyeFirmasiAdi", "NakliyeFirmasiEmail" },
-                values: new object[] { "Yost, Stamm and Wilderman Nakliyat", "YostStammandWildermanNakliyat9@yahoo.com" });
+                values: new object[] { "Schoen - Langosh Tasimacilik", "Schoen-LangoshTasimacilik.Streich83@gmail.com" });
 
             migrationBuilder.UpdateData(
                 table: "Rezervasyonlar",
                 keyColumn: "RezervasyonId",
                 keyValue: 2,
                 columns: new[] { "NakliyeFirmasiAdi", "NakliyeFirmasiEmail" },
-                values: new object[] { "Klocko - Nienow Ulastirma", "Klocko-NienowUlastirma_Kub@hotmail.com" });
+                values: new object[] { "Kerluke, Kuvalis and Smith Logistik", "KerlukeKuvalisandSmithLogistik_Waters59@yahoo.com" });
 
             migrationBuilder.UpdateData(
                 table: "Rezervasyonlar",
                 keyColumn: "RezervasyonId",
                 keyValue: 3,
                 columns: new[] { "NakliyeFirmasiAdi", "NakliyeFirmasiEmail" },
-                values: new object[] { "Ebert, Bruen and Nicolas Nakliyat", "EbertBruenandNicolasNakliyat32@hotmail.com" });
+                values: new object[] { "Hammes Inc Ulastirma", "HammesIncUlastirma.Stanton66@gmail.com" });
 
             migrationBuilder.UpdateData(
                 table: "Rezervasyonlar",
                 keyColumn: "RezervasyonId",
                 keyValue: 4,
                 columns: new[] { "NakliyeFirmasiAdi", "NakliyeFirmasiEmail" },
-                values: new object[] { "Hackett - Ziemann Ulastirma", "Hackett-ZiemannUlastirma_Bayer86@gmail.com" });
+                values: new object[] { "Corwin - Dicki Nakliyat", "Corwin-DickiNakliyat43@hotmail.com" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "a3a04333-bca2-4fea-a0ef-5c334c79de81", "b91f23f9-c4dc-4aa3-b1b5-27b3d8699556" });
+                values: new object[] { "a1dabf83-9801-425a-86aa-fdb10dbc62c4", "c881d303-8d8a-411b-a683-d25a1deeecef" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Menuler_RoleId",
+                table: "Menuler",
+                column: "RoleId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Menuler");
+
             migrationBuilder.DeleteData(
                 table: "AspNetUserRoles",
                 keyColumns: new[] { "RoleId", "UserId" },
-                keyValues: new object[] { "a3a04333-bca2-4fea-a0ef-5c334c79de81", "b91f23f9-c4dc-4aa3-b1b5-27b3d8699556" });
+                keyValues: new object[] { "a1dabf83-9801-425a-86aa-fdb10dbc62c4", "c881d303-8d8a-411b-a683-d25a1deeecef" });
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "a3a04333-bca2-4fea-a0ef-5c334c79de81");
+                keyValue: "a1dabf83-9801-425a-86aa-fdb10dbc62c4");
 
             migrationBuilder.DeleteData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
-                keyValue: "b91f23f9-c4dc-4aa3-b1b5-27b3d8699556");
+                keyValue: "c881d303-8d8a-411b-a683-d25a1deeecef");
 
             migrationBuilder.UpdateData(
                 table: "Araclar",
                 keyColumn: "AracId",
                 keyValue: 1,
                 columns: new[] { "AracPlakaNo", "AracSoforuIsim", "AracSoforuSoyisim", "AracSoforuTelNo", "AracTipi", "FirmaTelNo" },
-                values: new object[] { "TR 52 XW 602", "Precious", "Stanton", "(555) 979-8769", 3, "(069) 106-2504" });
+                values: new object[] { "TR 63 QL 020", "Gordon", "Runolfsdottir", "(741) 343-9712", 2, "(014) 100-0306" });
 
             migrationBuilder.UpdateData(
                 table: "Araclar",
                 keyColumn: "AracId",
                 keyValue: 2,
-                columns: new[] { "AracPlakaNo", "AracSoforuIsim", "AracSoforuSoyisim", "AracSoforuTelNo", "FirmaTelNo" },
-                values: new object[] { "TR 56 QX 929", "Nathanial", "Langworth", "(250) 306-7885", "(071) 570-4309" });
+                columns: new[] { "AracPlakaNo", "AracSoforuIsim", "AracSoforuSoyisim", "AracSoforuTelNo", "AracTipi", "FirmaTelNo" },
+                values: new object[] { "TR 10 NC 259", "Sage", "Cruickshank", "(699) 914-4986", 2, "(079) 169-9066" });
 
             migrationBuilder.UpdateData(
                 table: "Araclar",
                 keyColumn: "AracId",
                 keyValue: 3,
-                columns: new[] { "AracPlakaNo", "AracSoforuIsim", "AracSoforuSoyisim", "AracSoforuTelNo", "AracTipi", "FirmaTelNo" },
-                values: new object[] { "TR 62 PC 700", "Donald", "Davis", "(317) 712-1572", 1, "(028) 492-0754" });
+                columns: new[] { "AracPlakaNo", "AracSoforuIsim", "AracSoforuSoyisim", "AracSoforuTelNo", "FirmaTelNo" },
+                values: new object[] { "TR 23 GA 325", "Myah", "Weber", "(978) 300-3122", "(026) 882-9355" });
 
             migrationBuilder.UpdateData(
                 table: "Araclar",
                 keyColumn: "AracId",
                 keyValue: 4,
                 columns: new[] { "AracPlakaNo", "AracSoforuIsim", "AracSoforuSoyisim", "AracSoforuTelNo", "AracTipi", "FirmaTelNo" },
-                values: new object[] { "TR 23 BF 485", "Maci", "Romaguera", "(510) 003-3934", 3, "(081) 505-6758" });
+                values: new object[] { "TR 80 ET 849", "Loy", "Collier", "(534) 960-9691", 3, "(063) 397-7372" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "68b9679a-f507-4094-9066-19cb0713e1d8", null, "admin", "ADMIN" });
+                values: new object[] { "dcb592f3-4154-4e22-9569-bcc6f0370acb", null, "admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TCNo", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "dadc3d4d-9bf1-4921-9bb8-c9c67d21421a", 0, "cbccbe2d-c0a0-4a70-a021-a94b6b77b3aa", "admin@qwe.com", false, false, null, null, null, null, null, false, "80355ad4-56d8-4b88-bea6-ffa1e2e860b2", 0L, false, "admin" });
+                values: new object[] { "436dd851-3303-47a0-92d4-000fa64f7d96", 0, "31cbf086-9324-4024-89e5-96be4f55c12f", "admin@qwe.com", false, false, null, null, null, null, null, false, "39af88b7-d11f-407a-abbb-2d4807765e9f", 0L, false, "admin" });
 
             migrationBuilder.UpdateData(
                 table: "Nakliyeler",
                 keyColumn: "NakliyeId",
                 keyValue: 1,
-                columns: new[] { "NakliyeYapildimi", "TalepTarihi" },
-                values: new object[] { false, new DateTime(2021, 5, 3, 12, 23, 29, 629, DateTimeKind.Local).AddTicks(161) });
+                column: "TalepTarihi",
+                value: new DateTime(2023, 2, 18, 5, 49, 26, 159, DateTimeKind.Local).AddTicks(4649));
 
             migrationBuilder.UpdateData(
                 table: "Nakliyeler",
                 keyColumn: "NakliyeId",
                 keyValue: 2,
                 columns: new[] { "NakliyeYapildimi", "TalepTarihi" },
-                values: new object[] { false, new DateTime(2020, 12, 15, 17, 20, 41, 314, DateTimeKind.Local).AddTicks(3523) });
+                values: new object[] { false, new DateTime(2023, 5, 12, 15, 29, 59, 71, DateTimeKind.Local).AddTicks(9417) });
 
             migrationBuilder.UpdateData(
                 table: "Nakliyeler",
                 keyColumn: "NakliyeId",
                 keyValue: 3,
                 column: "TalepTarihi",
-                value: new DateTime(2023, 3, 20, 8, 5, 41, 796, DateTimeKind.Local).AddTicks(7726));
+                value: new DateTime(2020, 10, 19, 10, 58, 5, 919, DateTimeKind.Local).AddTicks(2357));
 
             migrationBuilder.UpdateData(
                 table: "Nakliyeler",
                 keyColumn: "NakliyeId",
                 keyValue: 4,
-                column: "TalepTarihi",
-                value: new DateTime(2021, 10, 6, 2, 3, 29, 68, DateTimeKind.Local).AddTicks(2713));
+                columns: new[] { "NakliyeYapildimi", "TalepTarihi" },
+                values: new object[] { false, new DateTime(2022, 2, 19, 20, 6, 18, 688, DateTimeKind.Local).AddTicks(2674) });
 
             migrationBuilder.UpdateData(
                 table: "Rezervasyonlar",
                 keyColumn: "RezervasyonId",
                 keyValue: 1,
                 columns: new[] { "NakliyeFirmasiAdi", "NakliyeFirmasiEmail" },
-                values: new object[] { "Kuhn - Berge Logistik", "Kuhn-BergeLogistik_Krajcik55@hotmail.com" });
+                values: new object[] { "Streich - Hodkiewicz Nakliyat", "Streich-HodkiewiczNakliyat.Williamson26@gmail.com" });
 
             migrationBuilder.UpdateData(
                 table: "Rezervasyonlar",
                 keyColumn: "RezervasyonId",
                 keyValue: 2,
                 columns: new[] { "NakliyeFirmasiAdi", "NakliyeFirmasiEmail" },
-                values: new object[] { "Leffler, Hoeger and Mayert Nakliyat", "LefflerHoegerandMayertNakliyat_Beier@yahoo.com" });
+                values: new object[] { "Sauer LLC Nakliyat", "SauerLLCNakliyat.Rowe61@hotmail.com" });
 
             migrationBuilder.UpdateData(
                 table: "Rezervasyonlar",
                 keyColumn: "RezervasyonId",
                 keyValue: 3,
                 columns: new[] { "NakliyeFirmasiAdi", "NakliyeFirmasiEmail" },
-                values: new object[] { "Yundt, Johnson and Gleichner Logistik", "YundtJohnsonandGleichnerLogistik.Mitchell@yahoo.com" });
+                values: new object[] { "Johns, Ruecker and Walker Logistik", "JohnsRueckerandWalkerLogistik.Hilpert@yahoo.com" });
 
             migrationBuilder.UpdateData(
                 table: "Rezervasyonlar",
                 keyColumn: "RezervasyonId",
                 keyValue: 4,
                 columns: new[] { "NakliyeFirmasiAdi", "NakliyeFirmasiEmail" },
-                values: new object[] { "Kris and Sons Logistik", "KrisandSonsLogistik_Hilll82@gmail.com" });
+                values: new object[] { "Kassulke - Padberg Ulastirma", "Kassulke-PadbergUlastirma55@hotmail.com" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "68b9679a-f507-4094-9066-19cb0713e1d8", "dadc3d4d-9bf1-4921-9bb8-c9c67d21421a" });
+                values: new object[] { "dcb592f3-4154-4e22-9569-bcc6f0370acb", "436dd851-3303-47a0-92d4-000fa64f7d96" });
         }
     }
 }
