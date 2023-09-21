@@ -30,8 +30,8 @@ namespace Transportation.MVC.Controllers
 
 			if(result.Succeeded)
 			{
-				await userManager.AddToRoleAsync(user, "Admin");
-				return RedirectToAction("Index", "Home", new { Area = "Admin" });
+				await userManager.AddToRoleAsync(user, "User");
+				return RedirectToAction("Index", "Home", new { Area = "User" });
 			}
 			else
 			{

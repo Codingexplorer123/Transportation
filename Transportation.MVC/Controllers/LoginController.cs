@@ -16,7 +16,7 @@ namespace Transportation.MVC.Controllers
         private readonly SignInManager<MyUser> signInManager;
 
         public LoginController(UserManager<MyUser> userManager, RoleManager<IdentityRole> roleManager
-            ,SignInManager<MyUser> signInManager)
+            , SignInManager<MyUser> signInManager)
         {
             this.userManager = userManager;
             this.roleManager = roleManager;
@@ -33,47 +33,52 @@ namespace Transportation.MVC.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Index(LoginDTO loginDTO)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(loginDTO);
             }
             // burada modelstate.IsValid methodu ile model icerisinde belirttigimiz tum logindto annotationlarina girilen ifade uygunmu kontrol eder.
-            var user2=await  userManager.FindByEmailAsync(loginDTO.Email);
+            var user2 = await userManager.FindByEmailAsync(loginDTO.Email);
 
-            var roles =await  userManager.GetRolesAsync(user2);
+            var roles = await userManager.GetRolesAsync(user2);
 
             var result = await signInManager.PasswordSignInAsync(user2, loginDTO.Password, true, false);
+
             
-          
+            var roleName = "admin";
+            var roleAdminMi = await roleManager.RoleExistsAsync(roleName);
 
             if (!result.Succeeded)
             {
                 ModelState.AddModelError("", "Email yada sifre hatalidir");
                 return View(loginDTO);
             }
-            //foreach (var role in roles)
-            //{
-            //    if (role == "admin")
-            //        return RedirectToAction("Index", "Home", new { Area = role });
+            if(roleAdminMi)
+            {
+              return RedirectToAction("Index", "Home", new { Area = "Admin" });
 
 
-            //}
+            }
 
-            return RedirectToAction("Index", "Home", new { Area = "Admin" });
+            return RedirectToAction("Index", "Home");
         }
         [HttpGet]
         public async Task<IActionResult> Forget()
         {
             return View("Forget");
         }
-		[HttpPost]
-		public async Task<IActionResult> Forget(string email)
-		{
+        [HttpPost]
+        public async Task<IActionResult> Forget(string email)
+        {
             if (string.IsNullOrEmpty(email) && string.IsNullOrWhiteSpace(email))
             {
 
             }
-			return View("Forget");
-		}
-	}
+            return View("Forget");
+        }
+        public async Task<IActionResult> Logout()
+        {
+            return View();
+        }
+    }
 }

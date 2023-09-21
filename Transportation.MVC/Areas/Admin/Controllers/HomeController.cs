@@ -5,7 +5,7 @@ using Transportation.Business.Abstract;
 namespace Transportation.MVC.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    
+    [Authorize(Roles ="Admin")]
     public class HomeController : Controller
     {
         private readonly INakliyeManager _nakliyeManager;
