@@ -10,12 +10,14 @@ namespace Transportation.MVC.Controllers
 	{
         private readonly UserManager<MyUser> userManager;
         private readonly IMapper mapper;
+		private readonly RoleManager<IdentityRole> rolemanager;
 
-        public RegisterController(UserManager<MyUser> userManager,IMapper mapper)
+		public RegisterController(UserManager<MyUser> userManager,IMapper mapper,RoleManager<IdentityRole> rolemanager)
         {
             this.userManager = userManager;
             this.mapper = mapper;
-        }
+			this.rolemanager = rolemanager;
+		}
         public IActionResult Index()
 		{
 			var register = new RegisterDTO();
@@ -27,7 +29,7 @@ namespace Transportation.MVC.Controllers
 		{
 			MyUser user = mapper.Map<MyUser>(register);
 			var result = await userManager.CreateAsync(user, register.Password);
-
+			
 			if(result.Succeeded)
 			{
 				await userManager.AddToRoleAsync(user, "User");

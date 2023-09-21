@@ -46,7 +46,9 @@ namespace Transportation.MVC.Controllers
 
             
             var roleName = "admin";
+            var roleName2 = "user";
             var roleAdminMi = await roleManager.RoleExistsAsync(roleName);
+            var roleUserMi = await roleManager.RoleExistsAsync(roleName2);
 
             if (!result.Succeeded)
             {
@@ -60,7 +62,12 @@ namespace Transportation.MVC.Controllers
 
             }
 
-            return RedirectToAction("Index", "Home");
+            if (roleUserMi)
+            {
+				return RedirectToAction("Index", "Home", new { Area = "User" });
+			}
+                return RedirectToAction("Index", "Home");
+            
         }
         [HttpGet]
         public async Task<IActionResult> Forget()
