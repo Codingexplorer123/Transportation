@@ -41,32 +41,30 @@ namespace Transportation.MVC.Controllers
             var user2 = await userManager.FindByEmailAsync(loginDTO.Email);
 
             var roles = await userManager.GetRolesAsync(user2);
+            
 
             var result = await signInManager.PasswordSignInAsync(user2, loginDTO.Password, true, false);
 
             
-            var roleName = "admin";
-            var roleName2 = "user";
-            var roleAdminMi = await roleManager.RoleExistsAsync(roleName);
-            var roleUserMi = await roleManager.RoleExistsAsync(roleName2);
+           
 
             if (!result.Succeeded)
             {
                 ModelState.AddModelError("", "Email yada sifre hatalidir");
                 return View(loginDTO);
             }
-            if(roleAdminMi)
+            if (roles[0] == "admin")
             {
-              return RedirectToAction("Index", "Home", new { Area = "Admin" });
+                return RedirectToAction("Index", "Home", new { Area = "Admin" });
 
 
             }
 
-            if (roleUserMi)
+            if (roles[0] == "user")
             {
-				return RedirectToAction("Index", "Home", new { Area = "User" });
-			}
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home", new { Area = "User" });
+            }
+            return RedirectToAction("Index", "Home");
             
         }
         [HttpGet]
