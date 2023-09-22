@@ -30,6 +30,7 @@ namespace Transportation.MVC.Controllers
         }
 
         [HttpPost]
+        [AutoValidateAntiforgeryToken]   // cerezlerin baska bir bilgisayar tarafindan alinip kullanilmasini engeller. Microsoft kendisi bir cerez daha atar
         [AllowAnonymous]
         public async Task<IActionResult> Index(LoginDTO loginDTO)
         {
@@ -39,10 +40,13 @@ namespace Transportation.MVC.Controllers
             }
             // burada modelstate.IsValid methodu ile model icerisinde belirttigimiz tum logindto annotationlarina girilen ifade uygunmu kontrol eder.
             var user2 = await userManager.FindByEmailAsync(loginDTO.Email);
-
-            var roles = await userManager.GetRolesAsync(user2);
             
 
+            var roles = await userManager.GetRolesAsync(user2);
+            // Bu userManagerdeki Metod bize girilen kullaniciya ait rolleri liste olarak getiriyor. Bizim projemizde her kullanicin bir
+            // tane rolu olacagini dusunerek liste tek elemanli olarak geri donecektir. Dolayisi ile asagida roles 0 indeksdeki degerini aldim.
+
+            
             var result = await signInManager.PasswordSignInAsync(user2, loginDTO.Password, true, false);
 
             
@@ -81,7 +85,7 @@ namespace Transportation.MVC.Controllers
             }
             return View("Forget");
         }
-        public async Task<IActionResult> Logout()
+        public async Task<IActionResult> Forbidden()
         {
             return View();
         }

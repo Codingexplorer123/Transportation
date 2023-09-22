@@ -57,6 +57,7 @@ namespace Transportation.Data.Context
 			modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole { Id=roleID,Name="admin",NormalizedName="ADMIN"});
             modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>() { RoleId = roleID, UserId = UserID });
 
-		}
+            
+        }
 	}
 }

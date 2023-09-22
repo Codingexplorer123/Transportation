@@ -29,9 +29,13 @@ namespace Transportation.MVC.Controllers
 		{
 			MyUser user = mapper.Map<MyUser>(register);
 			var result = await userManager.CreateAsync(user, register.Password);
+
 			
 			if(result.Succeeded)
 			{
+				var role = new IdentityRole();
+				role.Name = "User";
+				await rolemanager.CreateAsync(role);
 				await userManager.AddToRoleAsync(user, "User");
 				return RedirectToAction("Index", "Home", new { Area = "User" });
 			}
