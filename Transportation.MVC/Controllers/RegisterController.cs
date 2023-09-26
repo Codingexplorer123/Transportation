@@ -18,7 +18,7 @@ namespace Transportation.MVC.Controllers
             this.mapper = mapper;
 			this.rolemanager = rolemanager;
 		}
-        public IActionResult Index()
+        public IActionResult Register()
 		{
 			var register = new RegisterDTO();
 			return View(register);
