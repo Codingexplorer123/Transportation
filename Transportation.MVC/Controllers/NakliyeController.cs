@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Transportation.Data.Context;
 using TransportationEntity;
@@ -8,8 +9,8 @@ namespace Transportation.WebApi.Controllers
     // Buradaki Action Metodlarimizi Asenkron yapmak daha uygun cunku programin olceklendirilmesi acisindan ayni anda daha fazla http request
     //karsilamak icin cunku database e baglanmamiz gerekiyor(dis kaynak) verileri check etmek kaydetmek vs icin bosuna database
     // cevap verene kadar threadlerimiz bosta durmayip diger requestleri karsilamasi icin.
-    [ApiController]
-    [Route("api/[controller]")]
+    
+    [Authorize(Roles = "Admin,User")]
     public class NakliyeController : ControllerBase
     {
 

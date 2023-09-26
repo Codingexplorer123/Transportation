@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -85,9 +86,12 @@ namespace Transportation.MVC.Controllers
             }
             return View("Forget");
         }
-        public async Task<IActionResult> Forbidden()
+        public async Task<IActionResult> Exit()
         {
-            return View();
+            await HttpContext.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+            // Guvenli cikis ile ana sayfaya yonlendiriyorum
+
         }
     }
 }

@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@model ForgotDTO;
+
+
+<!DOCTYPE html>
 
 <!-- =========================================================
 * Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
@@ -119,13 +122,13 @@
                         <!-- /Logo -->
                         <h4 class="mb-2">Sifremi Unuttum 🔒</h4>
                         <p class="mb-4">Sifrenizi yenilemek icin email adresinizi giriniz</p>
-                        <form id="formAuthentication" class="mb-3" asp-action="Forget" asp-controller="Login" method="POST">
+                        <form  asp-action="Forget" asp-controller="Login" method="POST">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="text"
                                        class="form-control"
-                                       id="email"
-                                       name="email"
+                                       
+                                       asp-for="Email"
                                        placeholder="E-mailiniz"
                                        autofocus />
                             </div>
