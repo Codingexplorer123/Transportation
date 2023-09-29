@@ -11,7 +11,7 @@ namespace Transportation.WebApi.Controllers
     // cevap verene kadar threadlerimiz bosta durmayip diger requestleri karsilamasi icin.
     
     [Authorize(Roles = "Admin,User")]
-    public class NakliyeController : ControllerBase
+    public class NakliyeController : Controller
     {
 
         private readonly TransportationDbContext _context;

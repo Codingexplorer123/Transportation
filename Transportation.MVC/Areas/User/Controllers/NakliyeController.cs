@@ -1,28 +1,35 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Transportation.Business.Abstract;
+using Transportation.Business.Concrete;
 using Transportation.Data.Context;
 using TransportationEntity;
 
-namespace Transportation.MVC.Areas.User.Controller
+namespace Transportation.MVC.Areas.Controllers
 {
     [Area("User")]
     [Authorize(Roles = "Admin,User")]
     public class NakliyeController : Controller
     {
 
-        private readonly TransportationDbContext _context;
+        private readonly NakliyeManager _manager;
 
-        public NakliyeController(TransportationDbContext context)
+        private readonly IMapper _mapper;
+
+        public NakliyeController(INakliyeManager manager,IMapper mapper)
         {
-            _context = context;
+            _manager = (NakliyeManager?)manager;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetTumTalepler()
         {
-            var talepler = await _context.Nakliyeler.ToListAsync();
-            return Ok(talepler);
+            var talepler = await _manager.GetAllInclude(null, x => x.Araclar, x => x.Rezervasyon);
+            // Nakliyelerin iliskili oldugu tablolarida getirdik.
+            return View(talepler);
         }
 
         [HttpGet("{id}")]

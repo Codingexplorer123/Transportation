@@ -11,8 +11,9 @@ namespace TransportationEntity
 {
     public class MyUser :IdentityUser
     {
-       
-        public long TCNo { get; set; }
+
+        public string UserName { get; set; }
+        public long? TCNo { get; set; }
 
     }
 }
