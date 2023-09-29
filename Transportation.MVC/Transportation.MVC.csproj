@@ -29,7 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\User\View\Shared\" />
     <Folder Include="Content\Home\css\" />
     <Folder Include="Content\Home\js\" />
   </ItemGroup>

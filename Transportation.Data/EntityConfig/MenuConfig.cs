@@ -22,7 +22,7 @@ namespace Transportation.Data.EntityConfig
             builder.Property(p => p.MenuAdi).HasMaxLength(100);
 
 
-
+            
 
 
         }

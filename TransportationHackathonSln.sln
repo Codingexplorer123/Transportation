@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transportation.Data", "Tran
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transportation.Business", "Transportation.Business\Transportation.Business.csproj", "{ED06F028-22B8-4B7C-A64C-537D5DC2D83F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transportation.MVC", "Transportation.MVC\Transportation.MVC.csproj", "{32558D3E-BD61-4F2E-B10E-D1FDF04FFCBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transportation.MVC", "Transportation.MVC\Transportation.MVC.csproj", "{32558D3E-BD61-4F2E-B10E-D1FDF04FFCBD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
