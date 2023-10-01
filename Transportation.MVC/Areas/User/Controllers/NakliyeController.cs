@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Transportation.Business.Abstract;
 using Transportation.Business.Concrete;
 using Transportation.Data.Context;
+using Transportation.MVC.Areas.Admin.Models;
 using TransportationEntity;
 
 namespace Transportation.MVC.Areas.Controllers
@@ -15,44 +16,53 @@ namespace Transportation.MVC.Areas.Controllers
     {
 
         private readonly NakliyeManager _manager;
-
+        private readonly TransportationDbContext _context;
         private readonly IMapper _mapper;
 
-        public NakliyeController(INakliyeManager manager,IMapper mapper)
+        public NakliyeController(INakliyeManager manager,IMapper mapper,TransportationDbContext dbContext)
         {
             _manager = (NakliyeManager?)manager;
             _mapper = mapper;
+            _context = dbContext;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetTumTalepler()
+        public async Task<IActionResult> Index()
         {
             var talepler = await _manager.GetAllInclude(null, x => x.Araclar, x => x.Rezervasyon);
             // Nakliyelerin iliskili oldugu tablolarida getirdik.
             return View(talepler);
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetTalep(int id)
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
         {
             var talep = await _context.Nakliyeler.FirstOrDefaultAsync(x => x.NakliyeId == id);
             if (talep == null)
             {
                 return BadRequest();
             }
-            return Ok(talep);
+            return View(talep);
         }
+        [HttpGet]
+        public async Task<IActionResult> Create()
+        {
+            return View();
+        }
+
         [HttpPost]
-        public async Task<IActionResult> TalepOlustur(Nakliye talep)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> TalepOlustur(NakliyeCreateDTO nakliyeCreateDTO)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            _context.Nakliyeler.Add(talep);
-            _context.SaveChanges();
-            return StatusCode(201);
+            var result = _mapper.Map<Nakliye>(nakliyeCreateDTO);
+            // nakliyecreatedto den gelen verileri automapper ile entitye aktarmak icin
+            _context.Nakliyeler.Add(result);
+            await _context.SaveChangesAsync();
+            return RedirectToAction();
         }
 
 

@@ -67,7 +67,7 @@ namespace Transportation.MVC.Controllers
 
             if (roles[0] == "user")
             {
-                return RedirectToAction("Index", "Home", new { Area = "User" });
+                return RedirectToAction("Index", "Nakliye", new { Area = "User" });
             }
             return RedirectToAction("Index", "Home");
             

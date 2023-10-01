@@ -1,29 +1,36 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Transportation.Business.Abstract;
 using Transportation.Data.Context;
 using TransportationEntity;
 
 namespace Transportation.MVC.Areas.Admin.Controllers
 {
+    [Area("Admin")]
+    [Authorize(Roles = "Admin,User")]
     public class NakliyeController : Controller
     {
-        [Authorize(Roles = "Admin,User")]
-        public class NakliyeController : Controller
-        {
 
-            private readonly TransportationDbContext _context;
-
-            public NakliyeController(TransportationDbContext context)
+            private readonly INakliyeManager _Nakliyemanager;
+            private readonly IMapper _Mapper;
+        private readonly TransportationDbContext _context;
+           
+            public NakliyeController(INakliyeManager nakliyeManager,IMapper mapper,TransportationDbContext context)
             {
+                _Nakliyemanager = nakliyeManager;
+                _Mapper = mapper;
                 _context = context;
+             
             }
 
             [HttpGet]
             public async Task<IActionResult> GetTumTalepler()
             {
-                var talepler = await _context.Nakliyeler.ToListAsync();
+            var talepler = await _Nakliyemanager.GetAllAsync(null, x => x.Rezervasyon, x => x.Araclar);
+                // GetAllAsyncde filtreyi null yaptim tum yapilan talepleri gormek icin
                 return Ok(talepler);
             }
 
