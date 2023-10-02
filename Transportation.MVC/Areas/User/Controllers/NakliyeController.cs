@@ -19,7 +19,7 @@ namespace Transportation.MVC.Areas.Controllers
         private readonly TransportationDbContext _context;
         private readonly IMapper _mapper;
 
-        public NakliyeController(INakliyeManager manager,IMapper mapper,TransportationDbContext dbContext)
+        public NakliyeController(INakliyeManager manager, IMapper mapper, TransportationDbContext dbContext)
         {
             _manager = (NakliyeManager?)manager;
             _mapper = mapper;
@@ -52,7 +52,7 @@ namespace Transportation.MVC.Areas.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> TalepOlustur(NakliyeCreateDTO nakliyeCreateDTO)
+        public async Task<IActionResult> Create(NakliyeCreateDTO nakliyeCreateDTO)
         {
             if (!ModelState.IsValid)
             {
@@ -66,8 +66,8 @@ namespace Transportation.MVC.Areas.Controllers
         }
 
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> TalepGuncelle(int id, [FromBody] Nakliye guncelleme)
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id, [FromBody] Nakliye guncelleme)
         {
             Nakliye mevcut = await _context.Nakliyeler.SingleOrDefaultAsync(x => x.NakliyeId == id);
 
@@ -82,7 +82,7 @@ namespace Transportation.MVC.Areas.Controllers
             _context.SaveChanges();
             return Ok();
         }
-        [HttpDelete("{id}")]
+        
         public async Task<ActionResult<Nakliye>> TalepSil(int? id)
         {
             if (id == null)
