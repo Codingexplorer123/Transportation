@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Transportation.Business.Abstract;
 using Transportation.Data.Context;
 using TransportationEntity;
+using Transportation.Data.Repository.Concrete;
 
 namespace Transportation.MVC.Areas.Admin.Controllers
 {
@@ -16,9 +17,9 @@ namespace Transportation.MVC.Areas.Admin.Controllers
 
             private readonly INakliyeManager _Nakliyemanager;
             private readonly IMapper _Mapper;
-        private readonly TransportationDbContext _context;
+            private readonly TransportationDbContext _context;
            
-            public NakliyeController(INakliyeManager nakliyeManager,IMapper mapper,TransportationDbContext context)
+            public NakliyeController(INakliyeManager nakliyeManager,IMapper mapper,TransportationDbContext context )
             {
                 _Nakliyemanager = nakliyeManager;
                 _Mapper = mapper;
@@ -29,8 +30,8 @@ namespace Transportation.MVC.Areas.Admin.Controllers
             [HttpGet]
             public async Task<IActionResult> GetTumTalepler()
             {
-            var talepler = await _Nakliyemanager.GetAllAsync(null, x => x.Rezervasyon, x => x.Araclar);
-                // GetAllAsyncde filtreyi null yaptim tum yapilan talepleri gormek icin
+            var talepler = await _context.Nakliyeler.ToListAsync();
+                
                 return Ok(talepler);
             }
 
