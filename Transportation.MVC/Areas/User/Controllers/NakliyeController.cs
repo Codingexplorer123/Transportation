@@ -8,11 +8,8 @@ using Transportation.Data.Context;
 using Transportation.MVC.Areas.Admin.Models;
 using TransportationEntity;
 
-<<<<<<< HEAD
+
 namespace Transportation.MVC.Areas.User.Controllers
-=======
-namespace Transportation.MVC.Areas.Controllers
->>>>>>> c6ae0c5827fcfbc89ae0331fa69b92bfb6e6ac13
 {
     [Area("User")]
     [Authorize(Roles = "Admin,User")]
@@ -38,13 +35,10 @@ namespace Transportation.MVC.Areas.Controllers
             return View(talepler);
         }
 
-<<<<<<< HEAD
+
        
         public async Task<IActionResult> GetTalep(int id)
-=======
-        [HttpGet]
-        public async Task<IActionResult> Details(int id)
->>>>>>> c6ae0c5827fcfbc89ae0331fa69b92bfb6e6ac13
+
         {
             var talep = await _context.Nakliyeler.FirstOrDefaultAsync(x => x.NakliyeId == id);
             if (talep == null)
