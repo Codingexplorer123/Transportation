@@ -14,11 +14,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 // MVC i icin gereken Kutuphanede hazir bulunan Serviceleri cagiriyor.
-builder.Services.AddRazorPages()
-    .AddRazorPagesOptions(options =>
-    {
-        options.Conventions.AddAreaPageRoute("Admin", "/AdminHome/Index", "Admin");
-    });
+//builder.Services.AddRazorPages()
+//    .AddRazorPagesOptions(options =>
+//    {
+//        options.Conventions.AddAreaPageRoute("Admin", "/AdminHome/Index", "Admin");
+//    });
 
 builder.Services.AddTransient<DataGeneratorArac>();
 // https://learn.microsoft.com/en-us/ef/core/dbcontext-configuration/ burada database e serviceleri kullanarak nasil erisildigi detayli anlatiliyor
@@ -87,16 +87,21 @@ app.UseAuthentication();
 app.UseAuthorization();
 // Authorization yapmadik henuz yapacagiz. Authentication yaptiktan sonra
 
+#region Area Controller Route
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(
-        name: "admin",
-        pattern: "{area:exists}/{controller=AdminHome}/{action=Index}/{id?}");
+    name: "areas",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+    );
+});
+#endregion
 
-    endpoints.MapControllerRoute(
+#region Map Controller Route
+app.MapControllerRoute(
         name: "default",
         pattern: "{controller=Home}/{action=Index}/{id?}");
-});
+#endregion
 
 // Buradaki default Routeda eger http requestte controller belirtilmemisse ilk olarak Home Controller duseceginiz vs. belirtiyor.
 app.Run();

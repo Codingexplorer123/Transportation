@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Transportation.MVC.Areas.User.Controller
+namespace Transportation.MVC.Areas.User.Controllers
 {
-    public class RezervasyonController : Controllers
+    public class RezervasyonController : Controller
     {
         // GET: RezervasyonController
         public ActionResult Index()

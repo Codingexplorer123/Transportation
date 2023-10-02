@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using Transportation.Data.Context;
 using TransportationEntity;
 
-namespace Transportation.WebApi.Controllers
+namespace Transportation.MVC.Controllers
 {
     // Buradaki Action Metodlarimizi Asenkron yapmak daha uygun cunku programin olceklendirilmesi acisindan ayni anda daha fazla http request
     //karsilamak icin cunku database e baglanmamiz gerekiyor(dis kaynak) verileri check etmek kaydetmek vs icin bosuna database
     // cevap verene kadar threadlerimiz bosta durmayip diger requestleri karsilamasi icin.
     
     [Authorize(Roles = "Admin,User")]
-    public class NakliyeController : ControllerBase
+    public class NakliyeController : Controller
     {
 
         private readonly TransportationDbContext _context;

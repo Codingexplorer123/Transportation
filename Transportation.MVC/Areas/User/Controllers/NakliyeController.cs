@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Transportation.Data.Context;
 using TransportationEntity;
 
-namespace Transportation.MVC.Areas.User.Controller
+namespace Transportation.MVC.Areas.User.Controllers
 {
     [Area("User")]
     [Authorize(Roles = "Admin,User")]
@@ -25,7 +25,7 @@ namespace Transportation.MVC.Areas.User.Controller
             return Ok(talepler);
         }
 
-        [HttpGet("{id}")]
+       
         public async Task<IActionResult> GetTalep(int id)
         {
             var talep = await _context.Nakliyeler.FirstOrDefaultAsync(x => x.NakliyeId == id);
