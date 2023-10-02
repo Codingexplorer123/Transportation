@@ -1,0 +1,54 @@
+﻿@using Transportation.MVC.Areas.Admin.Models
+@model IEnumerable<TransportationEntity.Nakliye>
+
+<h1>Tum Nakliyeler</h1>
+<hr />
+<p>
+    <a asp-action="Create">Yeni Talep</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NakliyeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NakliyeYapildimi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TalepTarihi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MusteriDegerlendirmeleri)
+            </th>
+            <th></th>
+    
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var nakliye in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelnakliye => nakliye.NakliyeId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelnakliye => nakliye.NakliyeYapildimi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelnakliye => nakliye.TalepTarihi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelnakliye => nakliye.MusteriDegerlendirmeleri)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id ="@nakliye.NakliyeId">Edit</a> |
+                    <a asp-action="Details" asp-route-id ="@nakliye.NakliyeId">Details</a> | |
+                    <a asp-action="Delete" asp-route-id ="@nakliye.NakliyeId">Delete</a> | |
+                </td>
+
+            </tr>
+        }
+      
+    </tbody>
+</table>

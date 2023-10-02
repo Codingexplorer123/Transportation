@@ -1,56 +1,82 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Transportation.Business.Abstract;
+using Transportation.Business.Concrete;
 using Transportation.Data.Context;
+using Transportation.MVC.Areas.Admin.Models;
 using TransportationEntity;
 
+<<<<<<< HEAD
 namespace Transportation.MVC.Areas.User.Controllers
+=======
+namespace Transportation.MVC.Areas.Controllers
+>>>>>>> c6ae0c5827fcfbc89ae0331fa69b92bfb6e6ac13
 {
     [Area("User")]
     [Authorize(Roles = "Admin,User")]
     public class NakliyeController : Controller
     {
 
+        private readonly NakliyeManager _manager;
         private readonly TransportationDbContext _context;
+        private readonly IMapper _mapper;
 
-        public NakliyeController(TransportationDbContext context)
+        public NakliyeController(INakliyeManager manager, IMapper mapper, TransportationDbContext dbContext)
         {
-            _context = context;
+            _manager = (NakliyeManager?)manager;
+            _mapper = mapper;
+            _context = dbContext;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetTumTalepler()
+        public async Task<IActionResult> Index()
         {
-            var talepler = await _context.Nakliyeler.ToListAsync();
-            return Ok(talepler);
+            var talepler = await _manager.GetAllInclude(null, x => x.Araclar, x => x.Rezervasyon);
+            // Nakliyelerin iliskili oldugu tablolarida getirdik.
+            return View(talepler);
         }
 
+<<<<<<< HEAD
        
         public async Task<IActionResult> GetTalep(int id)
+=======
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+>>>>>>> c6ae0c5827fcfbc89ae0331fa69b92bfb6e6ac13
         {
             var talep = await _context.Nakliyeler.FirstOrDefaultAsync(x => x.NakliyeId == id);
             if (talep == null)
             {
                 return BadRequest();
             }
-            return Ok(talep);
+            return View(talep);
         }
+        [HttpGet]
+        public async Task<IActionResult> Create()
+        {
+            return View();
+        }
+
         [HttpPost]
-        public async Task<IActionResult> TalepOlustur(Nakliye talep)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(NakliyeCreateDTO nakliyeCreateDTO)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            _context.Nakliyeler.Add(talep);
-            _context.SaveChanges();
-            return StatusCode(201);
+            var result = _mapper.Map<Nakliye>(nakliyeCreateDTO);
+            // nakliyecreatedto den gelen verileri automapper ile entitye aktarmak icin
+            _context.Nakliyeler.Add(result);
+            await _context.SaveChangesAsync();
+            return RedirectToAction();
         }
 
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> TalepGuncelle(int id, [FromBody] Nakliye guncelleme)
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id, [FromBody] Nakliye guncelleme)
         {
             Nakliye mevcut = await _context.Nakliyeler.SingleOrDefaultAsync(x => x.NakliyeId == id);
 
@@ -65,7 +91,7 @@ namespace Transportation.MVC.Areas.User.Controllers
             _context.SaveChanges();
             return Ok();
         }
-        [HttpDelete("{id}")]
+        
         public async Task<ActionResult<Nakliye>> TalepSil(int? id)
         {
             if (id == null)
