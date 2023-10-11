@@ -1,0 +1,47 @@
+﻿@using TransportationEntity;
+@model IEnumerable<TransportationEntity.Nakliye>
+@{
+    ViewData["Title"] = "Tum Talepler";
+}
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a asp-controller="Nakliye" asp-action="Create"> Yeni Kayit Olustur</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NakliyeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NakliyeYapildimi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model=> model.TalepTarihi)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var nakliye in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => nakliye.NakliyeId)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => nakliye.NakliyeYapildimi)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => nakliye.TalepTarihi)
+                </td>
+                <td>
+                    <a asp-controller="Nakliye" asp-action="Edit" asp-route-id="@nakliye.NakliyeId">Duzenle</a> |
+                    <a asp-controller="Nakliye" asp-action="Details" asp-route-id="@nakliye.NakliyeId">Detay</a> |
+                    <a asp-controller="Nakliye" asp-action="Delete" asp-route-id="@nakliye.NakliyeId">Sil</a> |
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

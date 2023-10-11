@@ -1,8 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Transportation.Business.Abstract;
 using Transportation.Data.Context;
 using TransportationEntity;
+using Transportation.MVC.Models.DTOs;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using AutoMapper;
+using Transportation.Business.Concrete;
 
 namespace Transportation.WebApi.Controllers
 {
@@ -15,40 +20,56 @@ namespace Transportation.WebApi.Controllers
     {
 
         private readonly TransportationDbContext _context;
+        private readonly INakliyeManager _manager;
+        private readonly IMapper _mapper;
 
-        public NakliyeController(TransportationDbContext context)
+        public NakliyeController(TransportationDbContext context, INakliyeManager manager,IMapper mapper)
         {
             _context = context;
+            _manager = manager;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public async Task <IActionResult> GetTumTalepler()
         {
-            var talepler = await _context.Nakliyeler.ToListAsync();
-            return Ok(talepler);
+            var talepler = await _manager.GetAllInclude(null, x => x.Araclar, x => x.Rezervasyon);
+            return View(talepler);
         }
 
-        [HttpGet("{id}")]
-        public async Task <IActionResult> GetTalep(int id)
+        [HttpGet]
+        public async Task <IActionResult> Details(int id)
         {
-            var talep = await _context.Nakliyeler.FirstOrDefaultAsync(x=>x.NakliyeId == id);
-            if (talep == null)
-            {
-                return BadRequest();
-            }
-            return Ok(talep);
+            return View();
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Create()
+        {
+            var nakliye = await _manager.GetAllAsync();
+            return View();
+            
+        }
+
         [HttpPost]
-        public async Task <IActionResult> TalepOlustur(Nakliye talep)
+        public async Task <IActionResult> Create(NakliyeCreateDTO talep)
         {
             if(!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            
-            _context.Nakliyeler.Add(talep);
-            _context.SaveChanges();
-            return StatusCode(201);
+
+            try
+            {
+                var yeniKayit = _mapper.Map<Nakliye>(talep);
+                await _manager.InsertAsync(yeniKayit);
+                return RedirectToAction(nameof(GetTumTalepler));
+            }
+            catch (Exception)
+            {
+
+                return View(talep);
+            }
         }
 
 

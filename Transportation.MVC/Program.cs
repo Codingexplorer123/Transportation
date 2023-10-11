@@ -14,11 +14,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 // MVC i icin gereken Kutuphanede hazir bulunan Serviceleri cagiriyor.
-builder.Services.AddRazorPages()
-    .AddRazorPagesOptions(options =>
-    {
-        options.Conventions.AddAreaPageRoute("Admin", "/AdminHome/Index", "Admin");
-    });
 
 builder.Services.AddTransient<DataGeneratorArac>();
 // https://learn.microsoft.com/en-us/ef/core/dbcontext-configuration/ burada database e serviceleri kullanarak nasil erisildigi detayli anlatiliyor
@@ -85,7 +80,7 @@ app.UseRouting();
 // Client tarafindan gelen http requestlerin icerisindeki Urlde cozumleme yapar. Ona Gore ilgili controller in gerekli action metoduna istek duser.
 app.UseAuthentication();
 app.UseAuthorization();
-// Authorization yapmadik henuz yapacagiz. Authentication yaptiktan sonra
+// Authorizationi aktif etmek icin kullanilir.Authenticationdan sonra gelir.
 
 app.UseEndpoints(endpoints =>
 {
