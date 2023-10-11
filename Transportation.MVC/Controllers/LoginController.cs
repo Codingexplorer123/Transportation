@@ -41,14 +41,15 @@ namespace Transportation.MVC.Controllers
             }
             // burada modelstate.IsValid methodu ile model icerisinde belirttigimiz tum logindto annotationlarina girilen ifade uygunmu kontrol eder.
             var user2 = await userManager.FindByEmailAsync(loginDTO.Email);
-            
+
+            var result = await signInManager.PasswordSignInAsync(user2, loginDTO.Password,loginDTO.RememberMe,false);
 
             var roles = await userManager.GetRolesAsync(user2);
             // Bu userManagerdeki Metod bize girilen kullaniciya ait rolleri liste olarak getiriyor. Bizim projemizde her kullanicin bir
             // tane rolu olacagini dusunerek liste tek elemanli olarak geri donecektir. Dolayisi ile asagida roles 0 indeksdeki degerini aldim.
 
             
-            var result = await signInManager.PasswordSignInAsync(user2, loginDTO.Password, true, false);
+          
 
             
            

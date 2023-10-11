@@ -15,7 +15,8 @@ namespace Transportation.MVC.Models.DTOs
         [Required(AllowEmptyStrings = false, ErrorMessage = "Sifre girilmesi zorunludur.")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        public bool? RememberMe { get; set; } = true;
-        // Default deger olarak dogru yaptik
+        
+        public bool RememberMe { get; set; } 
+        
     }
 }
