@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using AutoMapper;
 using Transportation.Business.Concrete;
 
-namespace Transportation.WebApi.Controllers
+namespace Transportation.MVC.Controllers
 {
     // Buradaki Action Metodlarimizi Asenkron yapmak daha uygun cunku programin olceklendirilmesi acisindan ayni anda daha fazla http request
     //karsilamak icin cunku database e baglanmamiz gerekiyor(dis kaynak) verileri check etmek kaydetmek vs icin bosuna database
