@@ -14,8 +14,8 @@ namespace Transportation.MVC.Controllers
     // Buradaki Action Metodlarimizi Asenkron yapmak daha uygun cunku programin olceklendirilmesi acisindan ayni anda daha fazla http request
     //karsilamak icin cunku database e baglanmamiz gerekiyor(dis kaynak) verileri check etmek kaydetmek vs icin bosuna database
     // cevap verene kadar threadlerimiz bosta durmayip diger requestleri karsilamasi icin.
-    
-    [Authorize(Roles = "Admin,User")]
+
+    [Authorize(Roles = "Admin,user")]
     public class NakliyeController : Controller
     {
 
@@ -23,7 +23,7 @@ namespace Transportation.MVC.Controllers
         private readonly INakliyeManager _manager;
         private readonly IMapper _mapper;
 
-        public NakliyeController(TransportationDbContext context, INakliyeManager manager,IMapper mapper)
+        public NakliyeController(TransportationDbContext context, INakliyeManager manager, IMapper mapper)
         {
             _context = context;
             _manager = manager;
@@ -31,14 +31,14 @@ namespace Transportation.MVC.Controllers
         }
 
         [HttpGet]
-        public async Task <IActionResult> GetTumTalepler()
+        public async Task<IActionResult> GetTumTalepler()
         {
             var talepler = await _manager.GetAllInclude(null, x => x.Araclar, x => x.Rezervasyon);
             return View(talepler);
         }
 
         [HttpGet]
-        public async Task <IActionResult> Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
             return View();
         }
@@ -48,13 +48,13 @@ namespace Transportation.MVC.Controllers
         {
             var nakliye = await _manager.GetAllAsync();
             return View();
-            
+
         }
 
         [HttpPost]
-        public async Task <IActionResult> Create(NakliyeCreateDTO talep)
+        public async Task<IActionResult> Create(NakliyeCreateDTO talep)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
@@ -71,9 +71,12 @@ namespace Transportation.MVC.Controllers
                 return View(talep);
             }
         }
+        public async Task<IActionResult> TalepGuncelle (int id)
+        {
+            return View();
+        }
 
-
-        [HttpPut("{id}")]
+        [HttpPost]
         public async Task <IActionResult> TalepGuncelle(int id, [FromBody] Nakliye guncelleme)
         {
             Nakliye mevcut = await _context.Nakliyeler.SingleOrDefaultAsync(x => x.NakliyeId == id);
@@ -85,11 +88,12 @@ namespace Transportation.MVC.Controllers
             mevcut.TalepTarihi = guncelleme.TalepTarihi != default ? guncelleme.TalepTarihi : mevcut.TalepTarihi;
             mevcut.Aciklama = guncelleme.Aciklama != default ? guncelleme.Aciklama : mevcut.Aciklama;
 
-            _context.Nakliyeler.Update(guncelleme);
-            _context.SaveChanges();
-            return Ok();
+            await _manager.UpdateAsync(guncelleme);
+            return View(guncelleme);
         }
-        [HttpDelete("{id}")]
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult<Nakliye>> TalepSil(int? id)
         {
             if (id == null)

@@ -64,7 +64,7 @@ namespace Transportation.MVC.Controllers
 
             if (roles[0] == "user")
             {
-                return RedirectToAction("GetTumTalepler", nameof(NakliyeController));
+                return RedirectToAction("GetTumTalepler", nameof(Nakliye));
             }
             return RedirectToAction("Index", "Home");
             
