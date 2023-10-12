@@ -37,6 +37,7 @@ namespace Transportation.MVC.Controllers
         {
             if (!ModelState.IsValid)
             {
+               
                 return View(loginDTO);
             }
             // burada modelstate.IsValid methodu ile model icerisinde belirttigimiz tum logindto annotationlarina girilen ifade uygunmu kontrol eder.
@@ -49,11 +50,6 @@ namespace Transportation.MVC.Controllers
             // tane rolu olacagini dusunerek liste tek elemanli olarak geri donecektir. Dolayisi ile asagida roles 0 indeksdeki degerini aldim.
 
             
-          
-
-            
-           
-
             if (!result.Succeeded)
             {
                 ModelState.AddModelError("", "Email yada sifre hatalidir");
@@ -66,9 +62,9 @@ namespace Transportation.MVC.Controllers
 
             }
 
-            if (roles[0] == "User")
+            if (roles[0] == "user")
             {
-                return RedirectToAction("Index", "Nakliye", new { Area = "User" });
+                return RedirectToAction("GetTumTalepler", nameof(NakliyeController));
             }
             return RedirectToAction("Index", "Home");
             

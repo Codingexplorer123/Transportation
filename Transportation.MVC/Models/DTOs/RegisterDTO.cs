@@ -7,7 +7,7 @@ namespace Transportation.MVC.Models.DTOs
     {
 
         [Required(AllowEmptyStrings = false)]
-        [RegularExpression(".*[a-zA]+.*", ErrorMessage = "Lutfen harf giriniz")]
+       
         public string UserName { get; set; }
 
       

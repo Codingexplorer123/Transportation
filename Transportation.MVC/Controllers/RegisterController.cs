@@ -27,7 +27,16 @@ namespace Transportation.MVC.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Register(RegisterDTO register)
 		{
+			
+			
 			MyUser user = mapper.Map<MyUser>(register);
+
+			// AutoMapper calismadigi icin malesef asagidaki verileri manual olarak aktardim..
+			user.UserName = register.UserName;
+			user.Email = register.Email;
+			user.TCNo = 12345678912;
+
+
 			var result = await userManager.CreateAsync(user, register.Password);
 
 			
@@ -37,7 +46,7 @@ namespace Transportation.MVC.Controllers
 				role.Name = "User";
 				await rolemanager.CreateAsync(role);
 				await userManager.AddToRoleAsync(user, "User");
-				return RedirectToAction("Index", "Home", new { Area = "User" });
+				return RedirectToAction("GetTumTalepler", "Nakliye");
 			}
 			else
 			{
