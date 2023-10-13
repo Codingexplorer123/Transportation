@@ -22,15 +22,20 @@ namespace Transportation.Data.EntityConfig
             builder.Property(p=>p.AracSoforuTelNo).IsRequired();
             builder.Property(p=>p.FirmaTelNo).IsRequired();  
             
-        }
-        public void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Arac>()
-                        .HasOne<Nakliye>(e=>e.Nakliye)
-                        .WithMany(e=>e.Araclar)
+            builder.HasOne(e => e.Nakliye)
+                        .WithMany(e => e.Araclar)
                         .HasForeignKey(e => e.AracId)
                         .HasPrincipalKey(e => e.NakliyeId);
 
         }
+        //public void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Arac>()
+        //                .HasOne<Nakliye>(e=>e.Nakliye)
+        //                .WithMany(e=>e.Araclar)
+        //                .HasForeignKey(e => e.AracId)
+        //                .HasPrincipalKey(e => e.NakliyeId);
+
+        //}
     }
 }

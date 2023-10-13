@@ -74,7 +74,13 @@ namespace Transportation.MVC.Controllers
         [HttpGet]
         public async Task<IActionResult> TalepGuncelle (int id)
         {
-            return View();
+            if (id == null || _manager.GetByIdAsync(id) == null)
+            {
+                return View(id);
+            }
+
+            var nakliye = await _manager.GetByIdAsync(id);
+             return View(nakliye);
         }
 
         [HttpPost]
