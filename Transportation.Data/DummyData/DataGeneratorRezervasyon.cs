@@ -15,16 +15,17 @@ namespace Transportation.Data.DummyData
             List<Rezervasyon> rezervasyonlar = new List<Rezervasyon>();
             for (int i = 1; i < adet; i++)
             {
-                
+
                 var result = new Faker<Rezervasyon>()
-                    
+
                     .RuleFor(a => a.NakliyeFirmasiAdi, f => f.Company.CompanyName() + " " + f.PickRandom
                     (new string[] { "Logistik", "Nakliyat", "Tasimacilik", "Ulastirma" }))
                     .RuleFor(a => a.NakliyeFirmasiEmail, (f, a) => f.Internet.Email(a.NakliyeFirmasiAdi));
                     
+                    
                 Rezervasyon rezervasyon = result.Generate();
                 rezervasyon.RezervasyonId = i;
-
+                
                 rezervasyonlar.Add(rezervasyon);
 
             }

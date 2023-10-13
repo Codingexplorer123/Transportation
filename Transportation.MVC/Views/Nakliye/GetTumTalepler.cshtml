@@ -25,9 +25,7 @@
             <th>
                 @Html.DisplayNameFor(model=> model.Aciklama)
             </th>
-            <th>
-                @Html.DisplayNameFor(model=> model.RezervasyonId)
-            </th>
+           
             <th></th>
         </tr>
     </thead>
@@ -47,9 +45,7 @@
                 <td>
                     @nakliye.Aciklama
                 </td>
-                <td>
-                    @nakliye.RezervasyonId
-                </td>
+                
                 <td>
                     <a asp-controller="Nakliye" asp-action="Edit" asp-route-id="@nakliye.NakliyeId">Duzenle</a> |
                     <a asp-controller="Nakliye" asp-action="Details" asp-route-id="@nakliye.NakliyeId">Detay</a> |

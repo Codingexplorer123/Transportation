@@ -23,6 +23,8 @@ namespace Transportation.Data.DummyData
 
                 Nakliye nakliye = result.Generate();
                 nakliye.NakliyeId = i;
+                nakliye.AracId = i;
+                nakliye.RezervasyonId = i;
                 nakliyeler.Add(nakliye);
 
                 }

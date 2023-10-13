@@ -9,15 +9,15 @@ namespace TransportationEntity
 {
     public class Rezervasyon
     {
-        public int RezervasyonId { get; set; }
-        public int? NakliyeId { get; set; }
 
+        public int RezervasyonId { get; set; }
         public DateTime? RezervasyonTarihi { get; set; }
         public string NakliyeFirmasiAdi { get; set; }
 
         [DataType(DataType.EmailAddress)]
         public string NakliyeFirmasiEmail { get; set; }
 
+       
         public Nakliye? Nakliye { get; set; }
 
     }

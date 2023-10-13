@@ -12,8 +12,8 @@ using Transportation.Data.Context;
 namespace Transportation.Data.Migrations
 {
     [DbContext(typeof(TransportationDbContext))]
-    [Migration("20230917080615_initDb")]
-    partial class initDb
+    [Migration("20231013195815_mig1")]
+    partial class mig1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,7 +54,7 @@ namespace Transportation.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "dcb592f3-4154-4e22-9569-bcc6f0370acb",
+                            Id = "bc3f9389-782a-44db-a8c8-31ea50f8978b",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -149,8 +149,8 @@ namespace Transportation.Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "436dd851-3303-47a0-92d4-000fa64f7d96",
-                            RoleId = "dcb592f3-4154-4e22-9569-bcc6f0370acb"
+                            UserId = "a19464fb-ab6e-4a02-989e-d1bc580a720c",
+                            RoleId = "bc3f9389-782a-44db-a8c8-31ea50f8978b"
                         });
                 });
 
@@ -176,10 +176,7 @@ namespace Transportation.Data.Migrations
             modelBuilder.Entity("TransportationEntity.Arac", b =>
                 {
                     b.Property<int>("AracId")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AracId"));
 
                     b.Property<string>("AracPlakaNo")
                         .IsRequired()
@@ -204,12 +201,6 @@ namespace Transportation.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("NakliyeId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("RezervasyonId")
-                        .HasColumnType("int");
-
                     b.HasKey("AracId");
 
                     b.HasIndex("AracPlakaNo")
@@ -218,53 +209,92 @@ namespace Transportation.Data.Migrations
                     b.HasIndex("AracSoforuTelNo")
                         .IsUnique();
 
-                    b.HasIndex("NakliyeId");
-
-                    b.HasIndex("RezervasyonId");
-
                     b.ToTable("Araclar");
 
                     b.HasData(
                         new
                         {
                             AracId = 1,
-                            AracPlakaNo = "TR 63 QL 020",
-                            AracSoforuIsim = "Gordon",
-                            AracSoforuSoyisim = "Runolfsdottir",
-                            AracSoforuTelNo = "(741) 343-9712",
-                            AracTipi = 2,
-                            FirmaTelNo = "(014) 100-0306"
+                            AracPlakaNo = "TR 10 LG 577",
+                            AracSoforuIsim = "Laurine",
+                            AracSoforuSoyisim = "Terry",
+                            AracSoforuTelNo = "(552) 307-8977",
+                            AracTipi = 1,
+                            FirmaTelNo = "(059) 981-8846"
                         },
                         new
                         {
                             AracId = 2,
-                            AracPlakaNo = "TR 10 NC 259",
-                            AracSoforuIsim = "Sage",
-                            AracSoforuSoyisim = "Cruickshank",
-                            AracSoforuTelNo = "(699) 914-4986",
+                            AracPlakaNo = "TR 25 IW 631",
+                            AracSoforuIsim = "Elenora",
+                            AracSoforuSoyisim = "Hettinger",
+                            AracSoforuTelNo = "(611) 904-6911",
                             AracTipi = 2,
-                            FirmaTelNo = "(079) 169-9066"
+                            FirmaTelNo = "(082) 495-4644"
                         },
                         new
                         {
                             AracId = 3,
-                            AracPlakaNo = "TR 23 GA 325",
-                            AracSoforuIsim = "Myah",
-                            AracSoforuSoyisim = "Weber",
-                            AracSoforuTelNo = "(978) 300-3122",
-                            AracTipi = 4,
-                            FirmaTelNo = "(026) 882-9355"
+                            AracPlakaNo = "TR 28 MH 902",
+                            AracSoforuIsim = "Nelda",
+                            AracSoforuSoyisim = "Spinka",
+                            AracSoforuTelNo = "(093) 977-3504",
+                            AracTipi = 1,
+                            FirmaTelNo = "(043) 867-8025"
                         },
                         new
                         {
                             AracId = 4,
-                            AracPlakaNo = "TR 80 ET 849",
-                            AracSoforuIsim = "Loy",
-                            AracSoforuSoyisim = "Collier",
-                            AracSoforuTelNo = "(534) 960-9691",
-                            AracTipi = 3,
-                            FirmaTelNo = "(063) 397-7372"
+                            AracPlakaNo = "TR 17 XP 417",
+                            AracSoforuIsim = "Thad",
+                            AracSoforuSoyisim = "Ziemann",
+                            AracSoforuTelNo = "(606) 132-9799",
+                            AracTipi = 4,
+                            FirmaTelNo = "(009) 649-8723"
                         });
+                });
+
+            modelBuilder.Entity("TransportationEntity.Menu", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Action")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Area")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Class")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Controller")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Icon")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("MenuAdi")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("RoleId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("Menuler");
                 });
 
             modelBuilder.Entity("TransportationEntity.MyUser", b =>
@@ -312,7 +342,7 @@ namespace Transportation.Data.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("TCNo")
+                    b.Property<long?>("TCNo")
                         .HasColumnType("bigint");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -337,15 +367,14 @@ namespace Transportation.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "436dd851-3303-47a0-92d4-000fa64f7d96",
+                            Id = "a19464fb-ab6e-4a02-989e-d1bc580a720c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "31cbf086-9324-4024-89e5-96be4f55c12f",
+                            ConcurrencyStamp = "0021f883-2bc8-48a6-85b5-1e4b68be01a9",
                             Email = "admin@qwe.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "39af88b7-d11f-407a-abbb-2d4807765e9f",
-                            TCNo = 0L,
+                            SecurityStamp = "cf864841-4ecf-429d-b140-2cdfa16d1e76",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
@@ -384,26 +413,30 @@ namespace Transportation.Data.Migrations
                         new
                         {
                             NakliyeId = 1,
+                            AracId = 1,
                             NakliyeYapildimi = false,
-                            TalepTarihi = new DateTime(2023, 2, 18, 5, 49, 26, 159, DateTimeKind.Local).AddTicks(4649)
+                            TalepTarihi = new DateTime(2022, 4, 9, 8, 41, 29, 943, DateTimeKind.Local).AddTicks(6599)
                         },
                         new
                         {
                             NakliyeId = 2,
+                            AracId = 2,
                             NakliyeYapildimi = false,
-                            TalepTarihi = new DateTime(2023, 5, 12, 15, 29, 59, 71, DateTimeKind.Local).AddTicks(9417)
+                            TalepTarihi = new DateTime(2022, 12, 26, 18, 46, 37, 852, DateTimeKind.Local).AddTicks(9192)
                         },
                         new
                         {
                             NakliyeId = 3,
+                            AracId = 3,
                             NakliyeYapildimi = false,
-                            TalepTarihi = new DateTime(2020, 10, 19, 10, 58, 5, 919, DateTimeKind.Local).AddTicks(2357)
+                            TalepTarihi = new DateTime(2022, 2, 2, 15, 15, 27, 984, DateTimeKind.Local).AddTicks(123)
                         },
                         new
                         {
                             NakliyeId = 4,
+                            AracId = 4,
                             NakliyeYapildimi = false,
-                            TalepTarihi = new DateTime(2022, 2, 19, 20, 6, 18, 688, DateTimeKind.Local).AddTicks(2674)
+                            TalepTarihi = new DateTime(2021, 1, 7, 7, 54, 48, 699, DateTimeKind.Local).AddTicks(2664)
                         });
                 });
 
@@ -423,7 +456,7 @@ namespace Transportation.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int?>("NakliyeId")
+                    b.Property<int>("NakliyeId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("RezervasyonTarihi")
@@ -435,8 +468,7 @@ namespace Transportation.Data.Migrations
                         .IsUnique();
 
                     b.HasIndex("NakliyeId")
-                        .IsUnique()
-                        .HasFilter("[NakliyeId] IS NOT NULL");
+                        .IsUnique();
 
                     b.ToTable("Rezervasyonlar");
 
@@ -444,26 +476,34 @@ namespace Transportation.Data.Migrations
                         new
                         {
                             RezervasyonId = 1,
-                            NakliyeFirmasiAdi = "Streich - Hodkiewicz Nakliyat",
-                            NakliyeFirmasiEmail = "Streich-HodkiewiczNakliyat.Williamson26@gmail.com"
+                            NakliyeFirmasiAdi = "O'Reilly, Mann and Stamm Logistik",
+                            NakliyeFirmasiEmail = "OReillyMannandStammLogistik14@hotmail.com",
+                            NakliyeId = 0,
+                            RezervasyonTarihi = new DateTime(2022, 10, 10, 4, 9, 6, 645, DateTimeKind.Local).AddTicks(6245)
                         },
                         new
                         {
                             RezervasyonId = 2,
-                            NakliyeFirmasiAdi = "Sauer LLC Nakliyat",
-                            NakliyeFirmasiEmail = "SauerLLCNakliyat.Rowe61@hotmail.com"
+                            NakliyeFirmasiAdi = "Smitham, Carroll and Lowe Nakliyat",
+                            NakliyeFirmasiEmail = "SmithamCarrollandLoweNakliyat.Reinger@yahoo.com",
+                            NakliyeId = 0,
+                            RezervasyonTarihi = new DateTime(2021, 2, 23, 12, 36, 59, 92, DateTimeKind.Local).AddTicks(9005)
                         },
                         new
                         {
                             RezervasyonId = 3,
-                            NakliyeFirmasiAdi = "Johns, Ruecker and Walker Logistik",
-                            NakliyeFirmasiEmail = "JohnsRueckerandWalkerLogistik.Hilpert@yahoo.com"
+                            NakliyeFirmasiAdi = "Halvorson and Sons Logistik",
+                            NakliyeFirmasiEmail = "HalvorsonandSonsLogistik32@hotmail.com",
+                            NakliyeId = 0,
+                            RezervasyonTarihi = new DateTime(2022, 5, 25, 17, 16, 9, 671, DateTimeKind.Local).AddTicks(2188)
                         },
                         new
                         {
                             RezervasyonId = 4,
-                            NakliyeFirmasiAdi = "Kassulke - Padberg Ulastirma",
-                            NakliyeFirmasiEmail = "Kassulke-PadbergUlastirma55@hotmail.com"
+                            NakliyeFirmasiAdi = "Kiehn, Hills and Bechtelar Nakliyat",
+                            NakliyeFirmasiEmail = "KiehnHillsandBechtelarNakliyat.Erdman79@yahoo.com",
+                            NakliyeId = 0,
+                            RezervasyonTarihi = new DateTime(2022, 6, 29, 17, 27, 48, 53, DateTimeKind.Local).AddTicks(4386)
                         });
                 });
 
@@ -522,22 +562,29 @@ namespace Transportation.Data.Migrations
                 {
                     b.HasOne("TransportationEntity.Nakliye", "Nakliye")
                         .WithMany("Araclar")
-                        .HasForeignKey("NakliyeId");
-
-                    b.HasOne("TransportationEntity.Rezervasyon", "Rezervasyon")
-                        .WithMany()
-                        .HasForeignKey("RezervasyonId");
+                        .HasForeignKey("AracId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Nakliye");
+                });
 
-                    b.Navigation("Rezervasyon");
+            modelBuilder.Entity("TransportationEntity.Menu", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId");
+
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("TransportationEntity.Rezervasyon", b =>
                 {
                     b.HasOne("TransportationEntity.Nakliye", "Nakliye")
                         .WithOne("Rezervasyon")
-                        .HasForeignKey("TransportationEntity.Rezervasyon", "NakliyeId");
+                        .HasForeignKey("TransportationEntity.Rezervasyon", "NakliyeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Nakliye");
                 });

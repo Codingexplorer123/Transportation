@@ -46,9 +46,10 @@ namespace Transportation.Data.Context
             //Burasi Calisan Assembly icersinde ITypeEntityConfig interface'inden kalitim almis ne kadar class varsa 
             // onun icerisindeki Configure metodunu cagirir.
 
+            modelBuilder.Entity<Rezervasyon>().HasData(DataGeneratorRezervasyon.RezervasyonListesi(5));
             modelBuilder.Entity<Arac>().HasData(DataGeneratorArac.AracListesi(5));
             modelBuilder.Entity<Nakliye>().HasData(DataGeneratorNakliye.NakliyeListesi(5));
-            modelBuilder.Entity<Rezervasyon>().HasData(DataGeneratorRezervasyon.RezervasyonListesi(5));
+            
             var UserID = Guid.NewGuid().ToString();
 
 			modelBuilder.Entity<MyUser>().HasData(new MyUser { Id = UserID, UserName = "admin", Email = "admin@qwe.com" });
