@@ -21,12 +21,6 @@ namespace Transportation.Data.EntityConfig
                         .HasForeignKey<Rezervasyon>(e => e.NakliyeId);
         }
 
-        //public void OnModelCreating (ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<Rezervasyon>()
-        //                .HasOne<Nakliye>(e => e.Nakliye)
-        //                .WithOne(e => e.Rezervasyon)
-        //                .HasForeignKey<Rezervasyon>(e => e.NakliyeId);
-        //}
+        
     }
 }

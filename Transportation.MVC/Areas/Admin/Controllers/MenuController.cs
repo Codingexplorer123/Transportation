@@ -6,7 +6,7 @@ namespace Transportation.MVC.Areas.Admin.Controllers
 {
 
     [Area("Admin")]
-    [Authorize(Roles ="admin")]
+    [Authorize(Roles ="Admin")]
     public class MenuController : Controller
     {
         private readonly IMenuManager menuManager;

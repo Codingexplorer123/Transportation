@@ -28,14 +28,6 @@ namespace Transportation.Data.EntityConfig
                         .HasPrincipalKey(e => e.NakliyeId);
 
         }
-        //public void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<Arac>()
-        //                .HasOne<Nakliye>(e=>e.Nakliye)
-        //                .WithMany(e=>e.Araclar)
-        //                .HasForeignKey(e => e.AracId)
-        //                .HasPrincipalKey(e => e.NakliyeId);
-
-        //}
+       
     }
 }

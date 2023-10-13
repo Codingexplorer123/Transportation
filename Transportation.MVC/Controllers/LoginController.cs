@@ -55,14 +55,14 @@ namespace Transportation.MVC.Controllers
                 ModelState.AddModelError("", "Email yada sifre hatalidir");
                 return View(loginDTO);
             }
-            if (roles[0] == "admin")
+            if (roles[0] == "Admin")
             {
                 return RedirectToAction("Index", "Home", new { Area = "Admin" });
 
 
             }
 
-            if (roles[0] == "user")
+            if (roles[0] == "User")
             {
                 return RedirectToAction("GetTumTalepler", nameof(Nakliye));
             }

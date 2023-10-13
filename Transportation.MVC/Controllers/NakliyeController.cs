@@ -15,7 +15,7 @@ namespace Transportation.MVC.Controllers
     //karsilamak icin cunku database e baglanmamiz gerekiyor(dis kaynak) verileri check etmek kaydetmek vs icin bosuna database
     // cevap verene kadar threadlerimiz bosta durmayip diger requestleri karsilamasi icin.
 
-    [Authorize(Roles = "Admin,user")]
+    [Authorize(Roles = "Admin,User")]
     public class NakliyeController : Controller
     {
 
