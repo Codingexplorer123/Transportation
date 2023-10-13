@@ -16,6 +16,9 @@ namespace Transportation.MVC.Models.DTOs
         [DataType(DataType.DateTime)]
         public DateTime TalepTarihi { get; set; } = DateTime.Now;
 
+        public int? AracId { get; set; }
+        public int? RezervasyonId { get; set; }
+
 
     }
 }

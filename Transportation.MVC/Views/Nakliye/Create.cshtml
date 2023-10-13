@@ -5,22 +5,57 @@
 
 <h2>@ViewData["Title"]</h2>
 <body>
-
-<div class="w3-container">
-    
-    <div class="w3-card w3-dark-grey" style="width:50%">
-        <div class="w3-container w3-center">
-            <h3>Nakliye Kayidi Olustur</h3>
-            <img src="~/assets/img/Nakliye/NakliyeOlustur.png" alt="Resim", style="width:80%"/>
-            <h5>Yeni Kayit</h5>
-            <div class="w3-section">
-                <button class="w3-button w3-green">Olustur</button>
-                <button class="w3-button w3-red">Iptal</button>
-            </div>
-            
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+    <div class="card">
+        <div class="card-header">
+            <h3>Nakliye Kayit Formu</h3>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         </div>
-    
-    </div>
+        <div class="card-body">
+            <form asp-action="Create" method="post">
+                <div class="mb-3">
+                    <label asp-for="@Model.NakliyeYapildimi" class="form-label">Nakliye Yapildimi</label>
+                    <select class="form-select-sm" name="Nakliye">
+                        <option selected="selected" value="0">False</option>
+                        <option value="1">True</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="@Model.TalepTarihi" class="form-label">Talebin olusturuldugu tarih</label>
+                    <input asp-for="@Model.TalepTarihi" class="form-control">
+                    <span asp-validation-for="@Model.TalepTarihi" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="@Model.Aciklama" class="form-label">Nakliye Aciklama</label>
+                    <input asp-for="@Model.Aciklama" class="form-control">
+                    <span asp-validation-for="@Model.Aciklama" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="@Model.MusteriDegerlendirmeleri" class="form-label">Musteri Degerlendirmesi</label>
+                    <input asp-for="@Model.MusteriDegerlendirmeleri" class="form-control">
+                    <span asp-validation-for="@Model.MusteriDegerlendirmeleri" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="@Model.AracId" class="form-label">Arac Id</label>
+                    <input asp-for="@Model.AracId" class="form-control" />
+                     <span asp-validation-for="@Model.AracId" class="text-danger"></span>
+                </div>
+                         <div class="mb-3">
+                                <label asp-for="@Model.RezervasyonId" class="form-label">Rezervasyon Id</label>
+                                <input asp-for="@Model.RezervasyonId" class="form-control" />
+                                <span asp-validation-for="@Model.RezervasyonId" class="text-danger"></span>
 
-</div>
+                            </div>
+               <div class="mb-3">
+                   <button type="submit" class="btn btn-success">Kaydet</button>
+               </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    <div class="col-8"><img src="~/assets/img/Nakliye/NakliyeOlustur.png" />  </div>
+        </div>
+    </div>
 </body>

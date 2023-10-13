@@ -22,6 +22,9 @@
             <th>
                 @Html.DisplayNameFor(model=> model.TalepTarihi)
             </th>
+            <th>
+                @Html.DisplayNameFor(model=> model.Aciklama)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -30,13 +33,16 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayNameFor(model => nakliye.NakliyeId)
+                    @nakliye.NakliyeId
                 </td>
                 <td>
-                    @Html.DisplayNameFor(model => nakliye.NakliyeYapildimi)
+                    @nakliye.NakliyeYapildimi
                 </td>
                 <td>
-                    @Html.DisplayNameFor(model => nakliye.TalepTarihi)
+                    @nakliye.TalepTarihi
+                </td>
+                <td>
+                    @nakliye.Aciklama
                 </td>
                 <td>
                     <a asp-controller="Nakliye" asp-action="Edit" asp-route-id="@nakliye.NakliyeId">Duzenle</a> |

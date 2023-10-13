@@ -17,6 +17,7 @@ namespace TransportationEntity
 
         
         public int? AracId { get; set; }
+        public int? RezervasyonId { get; set; }
         public Rezervasyon? Rezervasyon { get; set; }
         public List<Arac>? Araclar { get; set; }
 

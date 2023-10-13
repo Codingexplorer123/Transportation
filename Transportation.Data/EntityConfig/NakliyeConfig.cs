@@ -18,6 +18,15 @@ namespace Transportation.Data.EntityConfig
             builder.Property(p => p.Aciklama).HasMaxLength(200);
           
         }
+        public  void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Nakliye>()
+                        .HasMany(e => e.Araclar)
+                        .WithOne(e => e.Nakliye)
+                        .HasForeignKey(e => e.AracId)
+                        .HasPrincipalKey(e => e.NakliyeId);
+                        
+        }
         
     }
 }

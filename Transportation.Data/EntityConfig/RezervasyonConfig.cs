@@ -16,5 +16,13 @@ namespace Transportation.Data.EntityConfig
             builder.Property(p=>p.NakliyeFirmasiEmail).IsRequired();
             builder.HasIndex(p=>p.NakliyeFirmasiEmail).IsUnique();
         }
+
+        public void OnModelCreating (ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Rezervasyon>()
+                        .HasOne<Nakliye>(e => e.Nakliye)
+                        .WithOne(e => e.Rezervasyon)
+                        .HasForeignKey<Rezervasyon>(e => e.RezervasyonId);
+        }
     }
 }
