@@ -71,6 +71,7 @@ namespace Transportation.MVC.Controllers
                 return View(talep);
             }
         }
+        [HttpGet]
         public async Task<IActionResult> TalepGuncelle (int id)
         {
             return View();

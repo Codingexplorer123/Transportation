@@ -22,7 +22,7 @@ namespace Transportation.Data.EntityConfig
             modelBuilder.Entity<Rezervasyon>()
                         .HasOne<Nakliye>(e => e.Nakliye)
                         .WithOne(e => e.Rezervasyon)
-                        .HasForeignKey<Rezervasyon>(e => e.RezervasyonId);
+                        .HasForeignKey<Rezervasyon>(e => e.NakliyeId);
         }
     }
 }
