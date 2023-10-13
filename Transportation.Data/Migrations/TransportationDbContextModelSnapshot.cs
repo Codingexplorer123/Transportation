@@ -51,7 +51,7 @@ namespace Transportation.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f8fe2625-90fd-4baa-a50e-5452236ea50d",
+                            Id = "26be009e-0de4-4d1a-9b0e-218a454ad1d8",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -146,8 +146,8 @@ namespace Transportation.Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "83f7f9a8-304d-4e89-837f-8d4e82ffd365",
-                            RoleId = "f8fe2625-90fd-4baa-a50e-5452236ea50d"
+                            UserId = "697775a6-2189-46c0-badf-cff360ad2e70",
+                            RoleId = "26be009e-0de4-4d1a-9b0e-218a454ad1d8"
                         });
                 });
 
@@ -212,42 +212,42 @@ namespace Transportation.Data.Migrations
                         new
                         {
                             AracId = 1,
-                            AracPlakaNo = "TR 52 GW 318",
-                            AracSoforuIsim = "Moriah",
-                            AracSoforuSoyisim = "Smith",
-                            AracSoforuTelNo = "(062) 796-0797",
-                            AracTipi = 3,
-                            FirmaTelNo = "(000) 496-3867"
+                            AracPlakaNo = "TR 35 BZ 299",
+                            AracSoforuIsim = "Althea",
+                            AracSoforuSoyisim = "Powlowski",
+                            AracSoforuTelNo = "(984) 099-7185",
+                            AracTipi = 2,
+                            FirmaTelNo = "(062) 069-9290"
                         },
                         new
                         {
                             AracId = 2,
-                            AracPlakaNo = "TR 57 WB 255",
-                            AracSoforuIsim = "Chloe",
-                            AracSoforuSoyisim = "Runolfsdottir",
-                            AracSoforuTelNo = "(986) 935-9934",
+                            AracPlakaNo = "TR 40 QY 623",
+                            AracSoforuIsim = "Lyla",
+                            AracSoforuSoyisim = "Nienow",
+                            AracSoforuTelNo = "(595) 996-8719",
                             AracTipi = 2,
-                            FirmaTelNo = "(004) 969-0252"
+                            FirmaTelNo = "(036) 611-6806"
                         },
                         new
                         {
                             AracId = 3,
-                            AracPlakaNo = "TR 80 ZL 461",
-                            AracSoforuIsim = "Jarret",
-                            AracSoforuSoyisim = "Douglas",
-                            AracSoforuTelNo = "(776) 206-0543",
+                            AracPlakaNo = "TR 8 JG 665",
+                            AracSoforuIsim = "Dashawn",
+                            AracSoforuSoyisim = "Hahn",
+                            AracSoforuTelNo = "(812) 628-0997",
                             AracTipi = 1,
-                            FirmaTelNo = "(041) 370-1539"
+                            FirmaTelNo = "(069) 107-4966"
                         },
                         new
                         {
                             AracId = 4,
-                            AracPlakaNo = "TR 80 UQ 553",
-                            AracSoforuIsim = "Chris",
-                            AracSoforuSoyisim = "Koss",
-                            AracSoforuTelNo = "(629) 232-2480",
+                            AracPlakaNo = "TR 8 GB 921",
+                            AracSoforuIsim = "Adrianna",
+                            AracSoforuSoyisim = "Emard",
+                            AracSoforuTelNo = "(155) 567-2203",
                             AracTipi = 1,
-                            FirmaTelNo = "(072) 109-4830"
+                            FirmaTelNo = "(070) 713-8009"
                         });
                 });
 
@@ -364,14 +364,14 @@ namespace Transportation.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "83f7f9a8-304d-4e89-837f-8d4e82ffd365",
+                            Id = "697775a6-2189-46c0-badf-cff360ad2e70",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "af20862f-d418-443b-aae2-065e98cad561",
+                            ConcurrencyStamp = "b7645107-0a71-40f8-9ed4-d842457bac48",
                             Email = "admin@qwe.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2b3763c1-9942-4875-812e-bc8976e44e87",
+                            SecurityStamp = "2957a259-916e-447b-a9e3-16a0146d13a7",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
@@ -414,25 +414,25 @@ namespace Transportation.Data.Migrations
                         {
                             NakliyeId = 1,
                             AracId = 1,
-                            NakliyeYapildimi = false,
+                            NakliyeYapildimi = true,
                             RezervasyonId = 1,
-                            TalepTarihi = new DateTime(2022, 5, 6, 8, 34, 2, 689, DateTimeKind.Local).AddTicks(630)
+                            TalepTarihi = new DateTime(2021, 10, 28, 9, 21, 17, 58, DateTimeKind.Local).AddTicks(3359)
                         },
                         new
                         {
                             NakliyeId = 2,
                             AracId = 2,
-                            NakliyeYapildimi = false,
+                            NakliyeYapildimi = true,
                             RezervasyonId = 2,
-                            TalepTarihi = new DateTime(2021, 9, 27, 21, 21, 50, 10, DateTimeKind.Local).AddTicks(968)
+                            TalepTarihi = new DateTime(2020, 12, 30, 12, 16, 49, 784, DateTimeKind.Local).AddTicks(3935)
                         },
                         new
                         {
                             NakliyeId = 3,
                             AracId = 3,
-                            NakliyeYapildimi = false,
+                            NakliyeYapildimi = true,
                             RezervasyonId = 3,
-                            TalepTarihi = new DateTime(2023, 9, 13, 1, 29, 20, 635, DateTimeKind.Local).AddTicks(9244)
+                            TalepTarihi = new DateTime(2022, 5, 30, 3, 19, 47, 873, DateTimeKind.Local).AddTicks(7930)
                         },
                         new
                         {
@@ -440,7 +440,7 @@ namespace Transportation.Data.Migrations
                             AracId = 4,
                             NakliyeYapildimi = true,
                             RezervasyonId = 4,
-                            TalepTarihi = new DateTime(2021, 11, 9, 4, 23, 7, 281, DateTimeKind.Local).AddTicks(8178)
+                            TalepTarihi = new DateTime(2021, 2, 1, 4, 54, 50, 133, DateTimeKind.Local).AddTicks(9653)
                         });
                 });
 
@@ -471,26 +471,26 @@ namespace Transportation.Data.Migrations
                         new
                         {
                             RezervasyonId = 1,
-                            NakliyeFirmasiAdi = "Borer and Sons Nakliyat",
-                            NakliyeFirmasiEmail = "BorerandSonsNakliyat_Spinka@gmail.com"
+                            NakliyeFirmasiAdi = "Murray Inc Logistik",
+                            NakliyeFirmasiEmail = "MurrayIncLogistik.Schuppe20@yahoo.com"
                         },
                         new
                         {
                             RezervasyonId = 2,
-                            NakliyeFirmasiAdi = "Green - Hudson Tasimacilik",
-                            NakliyeFirmasiEmail = "Green-HudsonTasimacilik79@hotmail.com"
+                            NakliyeFirmasiAdi = "Ward Inc Tasimacilik",
+                            NakliyeFirmasiEmail = "WardIncTasimacilik.Ziemann@hotmail.com"
                         },
                         new
                         {
                             RezervasyonId = 3,
-                            NakliyeFirmasiAdi = "Cummings - Yost Logistik",
-                            NakliyeFirmasiEmail = "Cummings-YostLogistik31@yahoo.com"
+                            NakliyeFirmasiAdi = "Considine Inc Logistik",
+                            NakliyeFirmasiEmail = "ConsidineIncLogistik_Gusikowski@hotmail.com"
                         },
                         new
                         {
                             RezervasyonId = 4,
-                            NakliyeFirmasiAdi = "Hessel, Conn and Kerluke Logistik",
-                            NakliyeFirmasiEmail = "HesselConnandKerlukeLogistik10@gmail.com"
+                            NakliyeFirmasiAdi = "Frami, Aufderhar and Flatley Ulastirma",
+                            NakliyeFirmasiEmail = "FramiAufderharandFlatleyUlastirma68@gmail.com"
                         });
                 });
 
