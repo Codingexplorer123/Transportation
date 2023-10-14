@@ -10,6 +10,7 @@ namespace Transportation.MVC.AutoMapperProfile
         {
             CreateMap<LoginDTO, MyUser>();
             CreateMap<RegisterDTO, MyUser>();
+            CreateMap<NakliyeCreateDTO, Nakliye>();
         }
         
     }

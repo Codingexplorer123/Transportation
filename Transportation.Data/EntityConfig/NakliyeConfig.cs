@@ -18,8 +18,10 @@ namespace Transportation.Data.EntityConfig
             builder.Property(p => p.MusteriDegerlendirmeleri).HasMaxLength(200);
             builder.Property(p => p.Aciklama).HasMaxLength(200);
             builder.HasMany(e => e.Araclar).WithOne(e => e.Nakliye).HasForeignKey(e => e.AracId).HasPrincipalKey(e => e.NakliyeId);
-          
-                        
+            builder.Property(x => x.NakliyeId).ValueGeneratedOnAdd();
+            
+
+
 
 
         }

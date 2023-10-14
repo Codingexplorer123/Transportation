@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Transportation.Data.Context;
 
@@ -11,9 +12,11 @@ using Transportation.Data.Context;
 namespace Transportation.Data.Migrations
 {
     [DbContext(typeof(TransportationDbContext))]
-    partial class TransportationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231014213608_mig6")]
+    partial class mig6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,7 +54,7 @@ namespace Transportation.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "74740f15-ecfc-40f2-a5a7-6dd8b9d4b8a1",
+                            Id = "d68aca3a-81e3-48f1-8974-530e04b6add2",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -146,8 +149,8 @@ namespace Transportation.Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "7c34ee9c-2bc7-41eb-915a-6bdea06daed8",
-                            RoleId = "74740f15-ecfc-40f2-a5a7-6dd8b9d4b8a1"
+                            UserId = "96477b5b-c351-4587-99c5-4e97b4ab09e7",
+                            RoleId = "d68aca3a-81e3-48f1-8974-530e04b6add2"
                         });
                 });
 
@@ -212,42 +215,42 @@ namespace Transportation.Data.Migrations
                         new
                         {
                             AracId = 1,
-                            AracPlakaNo = "TR 14 WI 465",
-                            AracSoforuIsim = "Neva",
-                            AracSoforuSoyisim = "Luettgen",
-                            AracSoforuTelNo = "(820) 411-7146",
-                            AracTipi = 4,
-                            FirmaTelNo = "(039) 021-7846"
+                            AracPlakaNo = "TR 57 KP 123",
+                            AracSoforuIsim = "Cole",
+                            AracSoforuSoyisim = "O'Connell",
+                            AracSoforuTelNo = "(513) 600-7563",
+                            AracTipi = 1,
+                            FirmaTelNo = "(000) 365-4077"
                         },
                         new
                         {
                             AracId = 2,
-                            AracPlakaNo = "TR 26 KK 871",
-                            AracSoforuIsim = "Agnes",
-                            AracSoforuSoyisim = "Leuschke",
-                            AracSoforuTelNo = "(220) 832-4214",
-                            AracTipi = 3,
-                            FirmaTelNo = "(095) 442-7672"
+                            AracPlakaNo = "TR 36 BE 160",
+                            AracSoforuIsim = "Favian",
+                            AracSoforuSoyisim = "Casper",
+                            AracSoforuTelNo = "(535) 191-9177",
+                            AracTipi = 4,
+                            FirmaTelNo = "(041) 890-7497"
                         },
                         new
                         {
                             AracId = 3,
-                            AracPlakaNo = "TR 32 JX 926",
-                            AracSoforuIsim = "Harley",
-                            AracSoforuSoyisim = "Cummings",
-                            AracSoforuTelNo = "(034) 646-0905",
+                            AracPlakaNo = "TR 59 TS 397",
+                            AracSoforuIsim = "Rosalyn",
+                            AracSoforuSoyisim = "Schimmel",
+                            AracSoforuTelNo = "(943) 412-2810",
                             AracTipi = 3,
-                            FirmaTelNo = "(074) 103-8880"
+                            FirmaTelNo = "(061) 784-7401"
                         },
                         new
                         {
                             AracId = 4,
-                            AracPlakaNo = "TR 81 PB 506",
-                            AracSoforuIsim = "Diego",
-                            AracSoforuSoyisim = "Nienow",
-                            AracSoforuTelNo = "(289) 834-7000",
-                            AracTipi = 1,
-                            FirmaTelNo = "(083) 977-2469"
+                            AracPlakaNo = "TR 12 RH 771",
+                            AracSoforuIsim = "Marlene",
+                            AracSoforuSoyisim = "Ortiz",
+                            AracSoforuTelNo = "(466) 729-0392",
+                            AracTipi = 4,
+                            FirmaTelNo = "(041) 089-5347"
                         });
                 });
 
@@ -364,14 +367,14 @@ namespace Transportation.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "7c34ee9c-2bc7-41eb-915a-6bdea06daed8",
+                            Id = "96477b5b-c351-4587-99c5-4e97b4ab09e7",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d8bde2d8-5120-4cd1-8bba-c99cf16b422c",
+                            ConcurrencyStamp = "c6a09f80-f198-4f95-b0a3-adf1cbf5ed77",
                             Email = "admin@qwe.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "46107515-2605-4f17-9e7b-cc8594ad72fd",
+                            SecurityStamp = "50c8b1e4-d832-4c06-9b3c-92c39b5251b7",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
@@ -412,17 +415,17 @@ namespace Transportation.Data.Migrations
                         {
                             NakliyeId = 1,
                             AracId = 1,
-                            NakliyeYapildimi = false,
+                            NakliyeYapildimi = true,
                             RezervasyonId = 1,
-                            TalepTarihi = new DateTime(2021, 7, 18, 10, 3, 28, 179, DateTimeKind.Local).AddTicks(7111)
+                            TalepTarihi = new DateTime(2022, 1, 14, 17, 48, 0, 98, DateTimeKind.Local).AddTicks(9079)
                         },
                         new
                         {
                             NakliyeId = 2,
                             AracId = 2,
-                            NakliyeYapildimi = true,
+                            NakliyeYapildimi = false,
                             RezervasyonId = 2,
-                            TalepTarihi = new DateTime(2021, 9, 3, 11, 28, 2, 761, DateTimeKind.Local).AddTicks(9398)
+                            TalepTarihi = new DateTime(2022, 1, 22, 2, 43, 4, 181, DateTimeKind.Local).AddTicks(4054)
                         },
                         new
                         {
@@ -430,7 +433,7 @@ namespace Transportation.Data.Migrations
                             AracId = 3,
                             NakliyeYapildimi = false,
                             RezervasyonId = 3,
-                            TalepTarihi = new DateTime(2022, 7, 16, 16, 2, 16, 461, DateTimeKind.Local).AddTicks(6634)
+                            TalepTarihi = new DateTime(2023, 3, 15, 8, 2, 12, 755, DateTimeKind.Local).AddTicks(5870)
                         },
                         new
                         {
@@ -438,7 +441,7 @@ namespace Transportation.Data.Migrations
                             AracId = 4,
                             NakliyeYapildimi = true,
                             RezervasyonId = 4,
-                            TalepTarihi = new DateTime(2023, 8, 3, 7, 20, 14, 495, DateTimeKind.Local).AddTicks(6908)
+                            TalepTarihi = new DateTime(2023, 1, 3, 22, 15, 31, 78, DateTimeKind.Local).AddTicks(6087)
                         });
                 });
 
@@ -472,26 +475,26 @@ namespace Transportation.Data.Migrations
                         new
                         {
                             RezervasyonId = 1,
-                            NakliyeFirmasiAdi = "Boyer Group Tasimacilik",
-                            NakliyeFirmasiEmail = "BoyerGroupTasimacilik.Gaylord@hotmail.com"
+                            NakliyeFirmasiAdi = "Mayer LLC Tasimacilik",
+                            NakliyeFirmasiEmail = "MayerLLCTasimacilik.Stamm35@yahoo.com"
                         },
                         new
                         {
                             RezervasyonId = 2,
-                            NakliyeFirmasiAdi = "Emard Inc Logistik",
-                            NakliyeFirmasiEmail = "EmardIncLogistik76@gmail.com"
+                            NakliyeFirmasiAdi = "Keebler, Marks and Champlin Ulastirma",
+                            NakliyeFirmasiEmail = "KeeblerMarksandChamplinUlastirma.Turner@gmail.com"
                         },
                         new
                         {
                             RezervasyonId = 3,
-                            NakliyeFirmasiAdi = "Kertzmann Group Logistik",
-                            NakliyeFirmasiEmail = "KertzmannGroupLogistik59@gmail.com"
+                            NakliyeFirmasiAdi = "DuBuque Inc Logistik",
+                            NakliyeFirmasiEmail = "DuBuqueIncLogistik12@yahoo.com"
                         },
                         new
                         {
                             RezervasyonId = 4,
-                            NakliyeFirmasiAdi = "Tillman - Medhurst Ulastirma",
-                            NakliyeFirmasiEmail = "Tillman-MedhurstUlastirma_Friesen61@gmail.com"
+                            NakliyeFirmasiAdi = "Simonis - Hirthe Logistik",
+                            NakliyeFirmasiEmail = "Simonis-HirtheLogistik89@gmail.com"
                         });
                 });
 

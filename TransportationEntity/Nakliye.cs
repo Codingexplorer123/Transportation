@@ -5,6 +5,8 @@ namespace TransportationEntity
 {
     public class Nakliye
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int NakliyeId { get; set; }
         public bool? NakliyeYapildimi { get; set; }
 

@@ -1,10 +1,15 @@
 ﻿using TransportationEntity;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Transportation.MVC.Models.DTOs
 {
     public class NakliyeCreateDTO
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int NakliyeId { get; set; }
+
         [Required(AllowEmptyStrings = false, ErrorMessage = "Nakliye Yapildimi alani zorunludur")]
         public bool NakliyeYapildimi { get; set; }
 

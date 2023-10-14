@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Transportation.Data.Context;
 
@@ -11,9 +12,11 @@ using Transportation.Data.Context;
 namespace Transportation.Data.Migrations
 {
     [DbContext(typeof(TransportationDbContext))]
-    partial class TransportationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231014212934_mig2")]
+    partial class mig2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,7 +54,7 @@ namespace Transportation.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "74740f15-ecfc-40f2-a5a7-6dd8b9d4b8a1",
+                            Id = "91f93204-82f1-42c7-ae22-e6fd4d1e25de",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -146,8 +149,8 @@ namespace Transportation.Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "7c34ee9c-2bc7-41eb-915a-6bdea06daed8",
-                            RoleId = "74740f15-ecfc-40f2-a5a7-6dd8b9d4b8a1"
+                            UserId = "71634a5b-b671-4003-b233-670ceae8cca9",
+                            RoleId = "91f93204-82f1-42c7-ae22-e6fd4d1e25de"
                         });
                 });
 
@@ -212,42 +215,42 @@ namespace Transportation.Data.Migrations
                         new
                         {
                             AracId = 1,
-                            AracPlakaNo = "TR 14 WI 465",
-                            AracSoforuIsim = "Neva",
-                            AracSoforuSoyisim = "Luettgen",
-                            AracSoforuTelNo = "(820) 411-7146",
-                            AracTipi = 4,
-                            FirmaTelNo = "(039) 021-7846"
+                            AracPlakaNo = "TR 2 LT 340",
+                            AracSoforuIsim = "Aubree",
+                            AracSoforuSoyisim = "Ryan",
+                            AracSoforuTelNo = "(131) 167-4419",
+                            AracTipi = 3,
+                            FirmaTelNo = "(092) 202-2179"
                         },
                         new
                         {
                             AracId = 2,
-                            AracPlakaNo = "TR 26 KK 871",
-                            AracSoforuIsim = "Agnes",
-                            AracSoforuSoyisim = "Leuschke",
-                            AracSoforuTelNo = "(220) 832-4214",
-                            AracTipi = 3,
-                            FirmaTelNo = "(095) 442-7672"
+                            AracPlakaNo = "TR 79 SY 983",
+                            AracSoforuIsim = "Geovany",
+                            AracSoforuSoyisim = "Howe",
+                            AracSoforuTelNo = "(733) 081-2461",
+                            AracTipi = 2,
+                            FirmaTelNo = "(028) 167-6342"
                         },
                         new
                         {
                             AracId = 3,
-                            AracPlakaNo = "TR 32 JX 926",
-                            AracSoforuIsim = "Harley",
-                            AracSoforuSoyisim = "Cummings",
-                            AracSoforuTelNo = "(034) 646-0905",
+                            AracPlakaNo = "TR 31 RS 570",
+                            AracSoforuIsim = "Bud",
+                            AracSoforuSoyisim = "Berge",
+                            AracSoforuTelNo = "(353) 586-3495",
                             AracTipi = 3,
-                            FirmaTelNo = "(074) 103-8880"
+                            FirmaTelNo = "(046) 219-8099"
                         },
                         new
                         {
                             AracId = 4,
-                            AracPlakaNo = "TR 81 PB 506",
-                            AracSoforuIsim = "Diego",
-                            AracSoforuSoyisim = "Nienow",
-                            AracSoforuTelNo = "(289) 834-7000",
-                            AracTipi = 1,
-                            FirmaTelNo = "(083) 977-2469"
+                            AracPlakaNo = "TR 4 BL 387",
+                            AracSoforuIsim = "Luisa",
+                            AracSoforuSoyisim = "Hane",
+                            AracSoforuTelNo = "(046) 659-6247",
+                            AracTipi = 3,
+                            FirmaTelNo = "(054) 847-5510"
                         });
                 });
 
@@ -364,14 +367,14 @@ namespace Transportation.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "7c34ee9c-2bc7-41eb-915a-6bdea06daed8",
+                            Id = "71634a5b-b671-4003-b233-670ceae8cca9",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d8bde2d8-5120-4cd1-8bba-c99cf16b422c",
+                            ConcurrencyStamp = "28e4878b-8a8b-486d-8dd7-9286821845ed",
                             Email = "admin@qwe.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "46107515-2605-4f17-9e7b-cc8594ad72fd",
+                            SecurityStamp = "f8818cc0-956d-4cfb-9d20-f983adceca9c",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
@@ -381,7 +384,8 @@ namespace Transportation.Data.Migrations
                 {
                     b.Property<int>("NakliyeId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasDefaultValueSql("NEWID()");
 
                     b.Property<string>("Aciklama")
                         .HasMaxLength(200)
@@ -412,25 +416,25 @@ namespace Transportation.Data.Migrations
                         {
                             NakliyeId = 1,
                             AracId = 1,
-                            NakliyeYapildimi = false,
+                            NakliyeYapildimi = true,
                             RezervasyonId = 1,
-                            TalepTarihi = new DateTime(2021, 7, 18, 10, 3, 28, 179, DateTimeKind.Local).AddTicks(7111)
+                            TalepTarihi = new DateTime(2021, 5, 22, 0, 30, 46, 458, DateTimeKind.Local).AddTicks(8498)
                         },
                         new
                         {
                             NakliyeId = 2,
                             AracId = 2,
-                            NakliyeYapildimi = true,
+                            NakliyeYapildimi = false,
                             RezervasyonId = 2,
-                            TalepTarihi = new DateTime(2021, 9, 3, 11, 28, 2, 761, DateTimeKind.Local).AddTicks(9398)
+                            TalepTarihi = new DateTime(2023, 9, 24, 19, 16, 2, 57, DateTimeKind.Local).AddTicks(4980)
                         },
                         new
                         {
                             NakliyeId = 3,
                             AracId = 3,
-                            NakliyeYapildimi = false,
+                            NakliyeYapildimi = true,
                             RezervasyonId = 3,
-                            TalepTarihi = new DateTime(2022, 7, 16, 16, 2, 16, 461, DateTimeKind.Local).AddTicks(6634)
+                            TalepTarihi = new DateTime(2021, 6, 26, 13, 40, 4, 616, DateTimeKind.Local).AddTicks(5351)
                         },
                         new
                         {
@@ -438,7 +442,7 @@ namespace Transportation.Data.Migrations
                             AracId = 4,
                             NakliyeYapildimi = true,
                             RezervasyonId = 4,
-                            TalepTarihi = new DateTime(2023, 8, 3, 7, 20, 14, 495, DateTimeKind.Local).AddTicks(6908)
+                            TalepTarihi = new DateTime(2020, 10, 22, 14, 54, 26, 127, DateTimeKind.Local).AddTicks(1826)
                         });
                 });
 
@@ -472,26 +476,26 @@ namespace Transportation.Data.Migrations
                         new
                         {
                             RezervasyonId = 1,
-                            NakliyeFirmasiAdi = "Boyer Group Tasimacilik",
-                            NakliyeFirmasiEmail = "BoyerGroupTasimacilik.Gaylord@hotmail.com"
+                            NakliyeFirmasiAdi = "Treutel, Purdy and Glover Nakliyat",
+                            NakliyeFirmasiEmail = "TreutelPurdyandGloverNakliyat39@hotmail.com"
                         },
                         new
                         {
                             RezervasyonId = 2,
-                            NakliyeFirmasiAdi = "Emard Inc Logistik",
-                            NakliyeFirmasiEmail = "EmardIncLogistik76@gmail.com"
+                            NakliyeFirmasiAdi = "Kuhic, Beer and Skiles Ulastirma",
+                            NakliyeFirmasiEmail = "KuhicBeerandSkilesUlastirma_Legros@hotmail.com"
                         },
                         new
                         {
                             RezervasyonId = 3,
-                            NakliyeFirmasiAdi = "Kertzmann Group Logistik",
-                            NakliyeFirmasiEmail = "KertzmannGroupLogistik59@gmail.com"
+                            NakliyeFirmasiAdi = "Lowe, Beer and Casper Ulastirma",
+                            NakliyeFirmasiEmail = "LoweBeerandCasperUlastirma_Marvin80@hotmail.com"
                         },
                         new
                         {
                             RezervasyonId = 4,
-                            NakliyeFirmasiAdi = "Tillman - Medhurst Ulastirma",
-                            NakliyeFirmasiEmail = "Tillman-MedhurstUlastirma_Friesen61@gmail.com"
+                            NakliyeFirmasiAdi = "O'Conner - Rohan Ulastirma",
+                            NakliyeFirmasiEmail = "OConner-RohanUlastirma51@yahoo.com"
                         });
                 });
 
