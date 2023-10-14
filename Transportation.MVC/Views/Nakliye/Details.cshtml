@@ -1,29 +1,36 @@
-﻿@model TransportationEntity.Nakliye;
+﻿@model Nakliye;
 @{
     ViewData["Title"] = "Detaylar";
 }
 
 <h2>@ViewData["Title"]</h2>
 
-<h2> Detaylar</h2>
 <div>
-    <h4>Nakliye</h4>
+    <h4>Nakliye Detaylari</h4>
     </hr>
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.NakliyeId)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayNameFor(model => model.AracId)
-        </dd>
-        <dt class="col-sms-2">
-            @Html.DisplayNameFor(model => model.Rezervasyon.NakliyeFirmasiAdi)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayNameFor(model =>model.Rezervasyon.NakliyeFirmasiEmail)
-        </dd>
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.NakliyeId)</th>
+                <th>@Html.DisplayNameFor(model => model.AracId)</th>
+                <th>@Html.DisplayNameFor(model => model.Rezervasyon.NakliyeFirmasiAdi)</th>
+                <th>@Html.DisplayNameFor(model =>model.Rezervasyon.NakliyeFirmasiEmail)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.NakliyeId</td>
+                    <td>@item.AracId</td>
+                    <td>@item.Rezervasyon.NakliyeFirmasiAdi</td>
+                    <td>@item.Rezervasyon.NakliyeFirmasiEmail</td>
+                </tr>
+            }
 
-    </dl>
+        </tbody>
+   
+    </table>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.NakliyeId">Duzenle</a> |
