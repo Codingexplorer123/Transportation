@@ -26,6 +26,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Transportation.Business\Transportation.Business.csproj" />
     <ProjectReference Include="..\Transportation.Data\Transportation.Data.csproj" />
+    <ProjectReference Include="..\TransportationEntity\TransportationEntity.csproj" />
   </ItemGroup>
 
   <ItemGroup>
