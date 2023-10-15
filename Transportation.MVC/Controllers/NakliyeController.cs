@@ -38,9 +38,18 @@ namespace Transportation.MVC.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(int? id)
         {
-            return View();
+            if(id == null)
+            {
+                return NotFound();
+            }
+            Nakliye nakliye = await _manager.GetByIdAsync((int)id);
+            if(nakliye == null)
+            {
+                return NotFound();
+            }
+            return View(nakliye);
         }
 
         [HttpGet]
