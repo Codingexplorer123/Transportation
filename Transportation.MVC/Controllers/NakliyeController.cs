@@ -83,33 +83,39 @@ namespace Transportation.MVC.Controllers
         [HttpGet]
         public async Task<IActionResult> TalepGuncelle (int id)
         {
-            if (id == null || _manager.GetByIdAsync(id) == null)
-            {
-                return NotFound();
-            }
-
-            var nakliye = await _manager.GetByIdAsync(id);
-            if(nakliye == null)
-            {
-                return NotFound();
-            }
-             return View(nakliye);
+            
+             return View();
         }
 
         [HttpPost]
-        public async Task <IActionResult> TalepGuncelle(int id, [FromBody] Nakliye guncelleme)
+        [ValidateAntiForgeryToken]
+        public async Task <IActionResult> TalepGuncelle(int id, IFormCollection collection)
         {
-            Nakliye mevcut = await _context.Nakliyeler.SingleOrDefaultAsync(x => x.NakliyeId == id);
+            var idVarMi = await _manager.GetByIdAsync(id);
+            if (idVarMi == null)
+            {
+                return View(idVarMi);
+            }
 
-            if (mevcut is null)
-                return NotFound();
+            var NakliyeYapildimi = collection["NakliyeYapildimi"];
+            var MusteriDegerlendirmesi = collection["MusteriDegerlendirmeleri"];
+            string Aciklama = collection["Aciklama"];
+            var TalepTarihi = collection["TalepTarihi"];
+            var AracId = collection["AracId"];
+            var RezervasyonId = collection["RezervasyonId"];
 
-            mevcut.MusteriDegerlendirmeleri = guncelleme.MusteriDegerlendirmeleri != default ? guncelleme.MusteriDegerlendirmeleri : mevcut.MusteriDegerlendirmeleri;
-            mevcut.TalepTarihi = guncelleme.TalepTarihi != default ? guncelleme.TalepTarihi : mevcut.TalepTarihi;
-            mevcut.Aciklama = guncelleme.Aciklama != default ? guncelleme.Aciklama : mevcut.Aciklama;
+            idVarMi.NakliyeYapildimi = NakliyeYapildimi;
+            idVarMi.MusteriDegerlendirmeleri = MusteriDegerlendirmesi;
+            idVarMi.Aciklama = Aciklama;
+            idVarMi.TalepTarihi = TalepTarihi;
+            int.TryParse(idVarMi.AracId) = AracId;
+            idVarMi.RezervasyonId = RezervasyonId;
 
-            await _manager.UpdateAsync(guncelleme);
-            return View(guncelleme);
+
+            await _manager.UpdateAsync(idVarMi);
+           
+
+           
         }
 
         [HttpPost]
