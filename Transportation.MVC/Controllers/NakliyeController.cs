@@ -111,20 +111,35 @@ namespace Transportation.MVC.Controllers
             idVarMi.AracId = Convert.ToInt32(AracId);
             idVarMi.RezervasyonId = Convert.ToInt32(RezervasyonId);
 
-
+             // Yukaridaki kodlari yazmayip automapperlada map islemi yapabilirdik.
             await _manager.UpdateAsync(idVarMi);
 
             return RedirectToAction("GetTumTalepler");
 
            
         }
+        [HttpGet]
+        public async Task<IActionResult> TalepSil(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var silinmekIstenenNakliye = await _manager.GetAllAsync(x=>x.NakliyeId == id);
+
+            if(silinmekIstenenNakliye == null)
+            {
+                return NotFound();
+            }
+            return View(silinmekIstenenNakliye);
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult<Nakliye>> TalepSil(int id)
         {
-            var silinmekIstenenNakliye = _manager.GetByIdAsync(id);
-            if (id == null)
+            var silinmekIstenenNakliye = await _manager.GetByIdAsync(id);
+            if (silinmekIstenenNakliye == null)
             {
                 return NotFound();
             }
