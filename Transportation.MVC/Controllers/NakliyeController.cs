@@ -85,10 +85,14 @@ namespace Transportation.MVC.Controllers
         {
             if (id == null || _manager.GetByIdAsync(id) == null)
             {
-                return View(id);
+                return NotFound();
             }
 
             var nakliye = await _manager.GetByIdAsync(id);
+            if(nakliye == null)
+            {
+                return NotFound();
+            }
              return View(nakliye);
         }
 
