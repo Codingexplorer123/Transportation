@@ -1,4 +1,4 @@
-﻿@model TransportationEntity.Nakliye
+﻿@model Nakliye;
 
 @{
     ViewData["Title"] = "TalepSil";
@@ -15,49 +15,54 @@
             @Html.DisplayNameFor(model => model.NakliyeYapildimi)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NakliyeYapildimi)
+            @Model.NakliyeYapildimi
         </dd>
+    </dl>
+    <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.MusteriDegerlendirmeleri)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MusteriDegerlendirmeleri)
+            @Model.MusteriDegerlendirmeleri
         </dd>
+    </dl>
+    <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Aciklama)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Aciklama)
+            @Model.Aciklama
         </dd>
+    </dl>
+    <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.TalepTarihi)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TalepTarihi)
+            @Model.TalepTarihi
         </dd>
+    </dl>
+    <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.AracId)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AracId)
+            @Model.AracId
         </dd>
+    </dl>
+    <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.RezervasyonId)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RezervasyonId)
+            @Model.RezervasyonId
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Rezervasyon)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Rezervasyon.NakliyeFirmasiAdi)
-        </dd>
+        
     </dl>
     
     <form asp-action="TalepSil">
          <input type="hidden" asp-for="NakliyeId" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <a asp-action="GetTumTalepler">Back to List</a>
     </form>
 </div>

@@ -125,7 +125,7 @@ namespace Transportation.MVC.Controllers
             {
                 return NotFound();
             }
-            var silinmekIstenenNakliye = await _manager.GetAllAsync(x=>x.NakliyeId == id);
+            var silinmekIstenenNakliye = await _manager.GetBy(x=>x.NakliyeId == id);
 
             if(silinmekIstenenNakliye == null)
             {
@@ -136,9 +136,9 @@ namespace Transportation.MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult<Nakliye>> TalepSil(int id)
+        public async Task<ActionResult<Nakliye>> TalepSil(Nakliye nakliye)
         {
-            var silinmekIstenenNakliye = await _manager.GetByIdAsync(id);
+            var silinmekIstenenNakliye = await _manager.GetByIdAsync(nakliye.NakliyeId);
             if (silinmekIstenenNakliye == null)
             {
                 return NotFound();
