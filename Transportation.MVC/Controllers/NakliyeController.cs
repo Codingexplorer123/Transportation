@@ -104,36 +104,34 @@ namespace Transportation.MVC.Controllers
             var AracId = collection["AracId"];
             var RezervasyonId = collection["RezervasyonId"];
 
-            idVarMi.NakliyeYapildimi = NakliyeYapildimi;
+            idVarMi.NakliyeYapildimi = Convert.ToBoolean(NakliyeYapildimi);
             idVarMi.MusteriDegerlendirmeleri = MusteriDegerlendirmesi;
             idVarMi.Aciklama = Aciklama;
-            idVarMi.TalepTarihi = TalepTarihi;
-            int.TryParse(idVarMi.AracId) = AracId;
-            idVarMi.RezervasyonId = RezervasyonId;
+            idVarMi.TalepTarihi = Convert.ToDateTime(TalepTarihi);
+            idVarMi.AracId = Convert.ToInt32(AracId);
+            idVarMi.RezervasyonId = Convert.ToInt32(RezervasyonId);
 
 
             await _manager.UpdateAsync(idVarMi);
-           
+
+            return RedirectToAction("GetTumTalepler");
 
            
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult<Nakliye>> TalepSil(int? id)
+        public async Task<ActionResult<Nakliye>> TalepSil(int id)
         {
+            var silinmekIstenenNakliye = _manager.GetByIdAsync(id);
             if (id == null)
             {
-                return BadRequest("Lutfen id degerini giriniz");
+                return NotFound();
             }
-            var nakliye = await _context.Nakliyeler.FindAsync(id);
-            if (nakliye == null)
-            {
-                return NotFound("Girdiginiz id ye karsilik gelen bir deger yoktur");
-            }
-            _context.Nakliyeler.Remove(nakliye);
-            _context.SaveChanges();
-            return Ok();
+
+            await _manager.DeleteAsync(silinmekIstenenNakliye);
+            
+            return RedirectToAction("GetTumTalepler");
         }
     }
 }

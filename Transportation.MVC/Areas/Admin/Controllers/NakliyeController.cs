@@ -35,7 +35,7 @@ namespace Transportation.MVC.Areas.Admin.Controllers
                 return Ok(talepler);
             }
 
-            [HttpGet("{id}")]
+            [HttpGet]
             public async Task<IActionResult> GetTalep(int id)
             {
                 var talep = await _context.Nakliyeler.FirstOrDefaultAsync(x => x.NakliyeId == id);
