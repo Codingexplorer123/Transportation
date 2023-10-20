@@ -72,7 +72,11 @@ namespace Transportation.Data.Repository.Concrete
             {
                 query = dbContext.Set<T>();
             }
-            return include.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
+
+            return query;
+            //return include.Aggregate(query, (current, include) => current.Include(include));
+
+            // Aggregate function ignore null values in sql tables.
 
         }
 

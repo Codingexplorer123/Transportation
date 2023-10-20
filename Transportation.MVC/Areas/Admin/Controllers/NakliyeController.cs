@@ -30,7 +30,7 @@ namespace Transportation.MVC.Areas.Admin.Controllers
             [HttpGet]
             public async Task<IActionResult> GetTumTalepler()
             {
-            var talepler = await _context.Nakliyeler.ToListAsync();
+            var talepler = await _Nakliyemanager.GetAllAsync();
                 
                 return Ok(talepler);
             }
